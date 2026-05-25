@@ -1,0 +1,6 @@
+{
+  "name": "WeConnect",
+  "description": "A professional training and consulting platform for Indian B2C professionals, offering courses, blogs, discovery calls, and content management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
