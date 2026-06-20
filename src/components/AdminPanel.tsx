@@ -32,15 +32,15 @@ export default function AdminPanel({
   // Course Form State
   const [courseForm, setCourseForm] = useState({
     title: '',
-    category: 'Technical' as 'Technical' | 'Soft Skills' | 'Leadership',
-    duration: '8 Weeks',
-    level: 'Intermediate' as 'Beginner' | 'Intermediate' | 'Advanced',
+    category: 'Kirtan' as 'Kirtan' | 'Mridanga' | 'Bhajan_Taal' | 'Prasthantrayi',
+    duration: '1 Year',
+    level: 'Beginner' as 'Beginner' | 'Intermediate' | 'Advanced',
     description: '',
-    price: 25000,
-    instructorName: 'Dyaneshwar',
-    instructorRole: 'Founder & Head Coach',
-    syllabus: 'Week 1-2: Fundamentals & Business Context\nWeek 3-4: Tech Architect & System specs\nWeek 5-6: Live Project & Portfolio Case Review',
-    outcomes: 'Write production-ready PRDs\nLead tech stakeholder alignments\nSecure immediate top-tier recruiter vetting',
+    price: 0,
+    instructorName: 'H.B.P. Sadguru Shastri Maharaj',
+    instructorRole: 'Alandi Gurukul Acharya',
+    syllabus: 'Month 1-3: Vocal Swar & Simple Abhang recitations\nMonth 4-6: Keertan presentation style and stage layout\nMonth 7-12: Full scriptural analysis and public performance',
+    outcomes: 'Lead traditional Varkari Keertan sessions independently\nMaster pure pronunciation of Sant Tukaram and Saint lineages\nAccolade certification from Alandi main ashram priests',
     metaTitle: '',
     metaDescription: '',
     scheduleDate: ''
@@ -49,10 +49,10 @@ export default function AdminPanel({
   // Blog Form State
   const [blogForm, setBlogForm] = useState({
     title: '',
-    category: 'Tips' as 'Career Growth' | 'Industry Trends' | 'Success Stories' | 'Tips',
+    category: 'Saints' as 'Saints' | 'Festival' | 'Pothi' | 'History',
     excerpt: '',
     content: '',
-    author: 'Dyaneshwar',
+    author: 'Sansthan Parishad',
     metaTitle: '',
     metaDescription: '',
     publishLaterDate: ''
@@ -82,34 +82,32 @@ export default function AdminPanel({
       category: courseForm.category,
       duration: courseForm.duration,
       level: courseForm.level,
-      description: courseForm.description || 'Excellent WeConnect curated curriculum structured directly for the Indian corporate standards.',
-      price: Number(courseForm.price),
-      rating: 4.8,
-      reviewsCount: 1,
-      image: courseForm.category === 'Technical' 
-        ? 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800'
-        : 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800',
-      instructorName: courseForm.instructorName,
-      instructorRole: courseForm.instructorRole,
-      syllabus: syllabusArray,
-      outcomes: outcomeArray
+      description: courseForm.description || 'Pristine authentic spiritual curriculum verified by the Alandi Mauli Varkari Shikshan Sansthan.',
+      rating: 4.9,
+      reviewsCount: 14,
+      image: courseForm.category === 'Kirtan' 
+        ? 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=800'
+        : 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&q=80&w=800',
+      instructor: courseForm.instructorName,
+      instructorTitle: courseForm.instructorRole,
+      syllabus: syllabusArray
     };
 
     onAddCourse(newCourse);
-    triggerNotification(`Course "${courseForm.title}" successfully compiled, mapped with SEO meta, and scheduled to live DB!`);
+    triggerNotification(`Admission Course "${courseForm.title}" successfully published, mapped with canonical schema, and scheduled to live feed!`);
     
     // reset form
     setCourseForm({
       title: '',
-      category: 'Technical',
-      duration: '8 Weeks',
-      level: 'Intermediate',
+      category: 'Kirtan',
+      duration: '1 Year',
+      level: 'Beginner',
       description: '',
-      price: 25000,
-      instructorName: 'Dyaneshwar',
-      instructorRole: 'Founder & Head Coach',
-      syllabus: 'Week 1-2: Fundamentals & Business Context\nWeek 3-4: Tech Architect & System specs\nWeek 5-6: Live Project & Portfolio Case Review',
-      outcomes: 'Write production-ready PRDs\nLead tech stakeholder alignments\nSecure immediate top-tier recruiter vetting',
+      price: 0,
+      instructorName: 'H.B.P. Sadguru Shastri Maharaj',
+      instructorRole: 'Alandi Gurukul Acharya',
+      syllabus: 'Month 1-3: Vocal Swar & Simple Abhang recitations\nMonth 4-6: Keertan presentation style and stage layout\nMonth 7-12: Full scriptural analysis and public performance',
+      outcomes: 'Lead traditional Varkari Keertan sessions independently\nMaster pure pronunciation of Sant Tukaram and Saint lineages\nAccolade certification from Alandi main ashram priests',
       metaTitle: '',
       metaDescription: '',
       scheduleDate: ''
@@ -126,25 +124,25 @@ export default function AdminPanel({
     const newBlog: BlogPost = {
       id: `b_custom_${Date.now()}`,
       title: blogForm.title,
-      category: blogForm.category,
-      excerpt: blogForm.excerpt || 'Recent executive guide launch on WeConnect resource labs.',
-      content: blogForm.content || 'Draft content queued for publication.',
+      category: blogForm.category as any,
+      excerpt: blogForm.excerpt || 'आळंदी माउली वारकरी शिक्षण सेवा लेख संग्रह.',
+      content: blogForm.content || 'पारंपारिक भक्ती मार्गावरील लेख प्रकाशनासाठी राखून ठेवले आहेत.',
       date: blogForm.publishLaterDate ? `Scheduled: ${blogForm.publishLaterDate}` : 'May 24, 2026',
       readTime: '5 min read',
       author: blogForm.author,
-      image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800'
+      image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=800'
     };
 
     onAddBlog(newBlog);
-    triggerNotification(`Blog "${blogForm.title}" queued for schedule and injected into index feeds!`);
+    triggerNotification(`Blog article "${blogForm.title}" compiled & queued under ${blogForm.category} tag!`);
     
     // reset form
     setBlogForm({
       title: '',
-      category: 'Tips',
+      category: 'Saints',
       excerpt: '',
       content: '',
-      author: 'Dyaneshwar',
+      author: 'Sansthan Parishad',
       metaTitle: '',
       metaDescription: '',
       publishLaterDate: ''
@@ -179,15 +177,15 @@ export default function AdminPanel({
         <div className="absolute inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px] opacity-15" />
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
           <div className="space-y-1.5">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-primary rounded-xl text-xs font-semibold tracking-wider text-brand-secondary">
-              <Bot className="w-4 h-4 text-brand-secondary shrink-0" />
-              <span>Developer Panel & Content Console</span>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-orange-600 rounded-xl text-xs font-semibold tracking-wider text-amber-200">
+              <Bot className="w-4 h-4 text-amber-200 shrink-0" />
+              <span>आळंदी गुरुपीठ व्यवस्थापन - CMS Console</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold font-display leading-tight tracking-tight text-white">
-              WeConnect Admin CMS Suite
+              Alandi Mauli Gurukul CMS Portal
             </h1>
             <p className="text-xs text-slate-400">
-              Mock Strapi/WordPress administrative dashboard mimicking course database mapping, event tracking logs, and publication calendars.
+              Administrative console overseeing Gurukul admissions, curriculum syllabus updates, and devotional calendar schedules.
             </p>
           </div>
 
@@ -197,11 +195,11 @@ export default function AdminPanel({
               className="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold border border-slate-700 transition-colors flex items-center gap-1.5"
             >
               <RefreshCw className="w-3.5 h-3.5" />
-              <span>Bulk Seed Syllabus (Demo)</span>
+              <span>Bulk Seed Admission Courses</span>
             </button>
-            <div className="px-3.5 py-1.5 bg-slate-800 rounded-xl border border-slate-700 text-[10px] font-mono font-semibold text-emerald-400 flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-              <span>DB LIVE CONNECTED: 0.0.0.0:3000</span>
+            <div className="px-3.5 py-1.5 bg-slate-800 rounded-xl border border-slate-700 text-[10px] font-mono font-semibold text-orange-400 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-ping" />
+              <span>GURUKUL DB CONNECTED: ALANDI DEVACHI</span>
             </div>
           </div>
         </div>
@@ -229,7 +227,7 @@ export default function AdminPanel({
             }`}
           >
             <LayoutDashboard className="w-4 h-4" />
-            <span>Analytics & Clicks Log</span>
+            <span>Gurukul Analytics Dashboard</span>
           </button>
 
           <button
@@ -241,7 +239,7 @@ export default function AdminPanel({
             }`}
           >
             <PlusCircle className="w-4 h-4" />
-            <span>SEO Course Upload</span>
+            <span>Manage Courses</span>
           </button>
 
           <button
@@ -253,7 +251,7 @@ export default function AdminPanel({
             }`}
           >
             <Calendar className="w-4 h-4" />
-            <span>Blog Scheduler</span>
+            <span>Devotional Article Editor</span>
           </button>
 
           <button
@@ -265,7 +263,7 @@ export default function AdminPanel({
             }`}
           >
             <Settings className="w-4 h-4" />
-            <span>Bookings & Leads Queue ({bookings.length})</span>
+            <span>Gurukul Admission Interviews ({bookings.length})</span>
           </button>
         </div>
 
@@ -277,11 +275,11 @@ export default function AdminPanel({
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               
               <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-xs flex items-center gap-4">
-                <div className="p-3 bg-brand-primary/5 rounded-2xl text-brand-primary">
+                <div className="p-3 bg-orange-650/10 rounded-2xl text-orange-600">
                   <Eye className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 font-bold uppercase block tracking-wider">GA4 Active Sessions</span>
+                  <span className="text-[10px] text-slate-400 font-bold uppercase block tracking-wider">Active Pilgrim Visitors</span>
                   <span className="text-xl font-extrabold text-slate-800 font-sans">4,192</span>
                   <p className="text-[9px] text-emerald-500 font-medium mt-0.5">↑ 14% past week</p>
                 </div>
@@ -292,9 +290,9 @@ export default function AdminPanel({
                   <TrendingUp className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 font-bold uppercase block tracking-wider">Course Inquiries</span>
-                  <span className="text-xl font-extrabold text-slate-800 font-sans">142 Clicks</span>
-                  <p className="text-[9px] text-slate-400 mt-0.5">CTA conversion: 4.8%</p>
+                  <span className="text-[10px] text-slate-400 font-bold uppercase block tracking-wider">Admissions Applied</span>
+                  <span className="text-xl font-extrabold text-slate-800 font-sans">142 Inquiries</span>
+                  <p className="text-[9px] text-slate-400 mt-0.5">Seat filling index: 84%</p>
                 </div>
               </div>
 
@@ -303,7 +301,7 @@ export default function AdminPanel({
                   <MessageSquare className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 font-bold uppercase block tracking-wider">WhatsApp Clicks</span>
+                  <span className="text-[10px] text-slate-400 font-bold uppercase block tracking-wider">WhatsApp Seva Inquiries</span>
                   <span className="text-xl font-extrabold text-slate-800 font-sans">284 Clicks</span>
                   <p className="text-[9px] text-emerald-500 font-medium mt-0.5">Primary Indian Lead channel</p>
                 </div>
@@ -314,9 +312,9 @@ export default function AdminPanel({
                   <Users className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-400 font-bold uppercase block tracking-wider">Calendar Signups</span>
-                  <span className="text-xl font-extrabold text-slate-800 font-sans">{bookings.length} Booked</span>
-                  <p className="text-[9px] text-slate-400 mt-0.5">Diagnostics IST schedule queue</p>
+                  <span className="text-[10px] text-slate-400 font-bold uppercase block tracking-wider">Interview Slots Booked</span>
+                  <span className="text-xl font-extrabold text-slate-800 font-sans">{bookings.length} Scheduled</span>
+                  <p className="text-[9px] text-slate-400 mt-0.5">Gurukul interview timetable queue</p>
                 </div>
               </div>
 
@@ -358,7 +356,7 @@ export default function AdminPanel({
                 
                 <div className="p-5 bg-slate-900 text-slate-300 font-mono text-[11px] rounded-2xl space-y-3 leading-relaxed">
                   <p className="text-[#0D9488]"># crawler config check loaded from robots.txt</p>
-                  <p className="text-emerald-400">User-agent: * <br />Allow: / <br />Sitemap: https://weconnect.in/sitemap.xml</p>
+                  <p className="text-emerald-400">User-agent: * <br />Allow: / <br />Sitemap: https://alandimauli.com/sitemap.xml</p>
                   
                   <div className="pt-3 border-t border-slate-800 space-y-2">
                     <p className="text-slate-400">{`>`} indexing status: Active</p>
@@ -366,8 +364,8 @@ export default function AdminPanel({
                     <p className="text-slate-400">{`>`} core web vitals speed index: LCP 1.1s (Excellent range)</p>
                   </div>
                   
-                  <div className="p-2.5 bg-slate-800 text-brand-secondary rounded border border-slate-700 text-[10px] uppercase font-bold text-center mt-2">
-                    Google Index Crawled: Success (May 2026)
+                  <div className="p-2.5 bg-slate-800 text-orange-200 rounded border border-slate-700 text-[10px] uppercase font-bold text-center mt-2">
+                    Google Index Crawled: Success for alandimauli.com
                   </div>
                 </div>
               </div>
@@ -382,7 +380,7 @@ export default function AdminPanel({
           <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-xl max-w-4xl mx-auto animate-fade-in">
             <div className="border-b pb-4 mb-6 space-y-1">
               <h3 className="text-lg font-bold text-slate-800">SEO-Optimized Course Schema Injection Tool</h3>
-              <p className="text-xs text-slate-400">Add custom professional bootcamps, configure GST prices, and set SEO Meta keywords in one dashboard.</p>
+              <p className="text-xs text-slate-400">Add custom spiritual tracks, configure admission parameters, and set SEO Meta keywords in one dashboard.</p>
             </div>
 
             <form onSubmit={handleCreateCourse} className="space-y-6">
@@ -393,10 +391,10 @@ export default function AdminPanel({
                   <input
                     type="text"
                     required
-                    placeholder="Python & Generative AI for Executives"
+                    placeholder="उदा. ४-वर्षीय कीर्तन शास्त्र अभ्यासक्रम"
                     value={courseForm.title}
                     onChange={(e) => setCourseForm({ ...courseForm, title: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 outline-hidden focus:bg-white focus:ring-1 focus:ring-brand-primary"
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 outline-hidden focus:bg-white focus:ring-1 focus:ring-orange-600"
                   />
                 </div>
 
@@ -405,11 +403,12 @@ export default function AdminPanel({
                   <select
                     value={courseForm.category}
                     onChange={(e) => setCourseForm({ ...courseForm, category: e.target.value as any })}
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 outline-hidden focus:bg-white focus:ring-1 focus:ring-brand-primary cursor-pointer font-sans"
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 outline-hidden focus:bg-white focus:ring-1 focus:ring-orange-600 cursor-pointer font-sans"
                   >
-                    <option value="Technical">Technical</option>
-                    <option value="Soft Skills">Soft Skills/Corporate</option>
-                    <option value="Leadership">Leadership Frameworks</option>
+                    <option value="Kirtan">Kirtan (कीर्तन शास्त्र)</option>
+                    <option value="Mridanga">Mridanga / Pakhavaj (पखवाज वादन)</option>
+                    <option value="Bhajan_Taal">Bhajan & Taal (भजन व तालप्रकार)</option>
+                    <option value="Prasthantrayi">Prasthantrayi (प्रस्थानत्रयी अभ्यास)</option>
                   </select>
                 </div>
 
@@ -422,10 +421,10 @@ export default function AdminPanel({
                   <input
                     type="text"
                     required
-                    placeholder="8 Weeks"
+                    placeholder="1 Year / 4 Years"
                     value={courseForm.duration}
                     onChange={(e) => setCourseForm({ ...courseForm, duration: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 outline-hidden focus:bg-white focus:ring-1 focus:ring-brand-primary"
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 outline-hidden focus:bg-white focus:ring-1 focus:ring-orange-600"
                   />
                 </div>
 
@@ -434,23 +433,22 @@ export default function AdminPanel({
                   <select
                     value={courseForm.level}
                     onChange={(e) => setCourseForm({ ...courseForm, level: e.target.value as any })}
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 outline-hidden focus:bg-white focus:ring-1 focus:ring-brand-primary cursor-pointer font-sans"
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 outline-hidden focus:bg-white focus:ring-1 focus:ring-orange-600 cursor-pointer font-sans"
                   >
-                    <option value="Beginner">Beginner Level</option>
-                    <option value="Intermediate">Intermediate Level</option>
-                    <option value="Advanced">Advanced Executive Level</option>
+                    <option value="Beginner">Beginner (प्राथमिक)</option>
+                    <option value="Intermediate">Intermediate (मध्यम)</option>
+                    <option value="Advanced">Advanced (उच्च विशारद)</option>
                   </select>
                 </div>
 
                 <div className="space-y-1">
-                  <span className="text-[10px] font-bold text-slate-500 uppercase">Course Fee Amount (INR)</span>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase">Gurukul Admission Fee (INR - Always Free)</span>
                   <input
                     type="number"
-                    required
-                    placeholder="25000"
-                    value={courseForm.price}
-                    onChange={(e) => setCourseForm({ ...courseForm, price: Number(e.target.value) })}
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 outline-hidden focus:bg-white focus:ring-1 focus:ring-brand-primary"
+                    disabled
+                    placeholder="0"
+                    value={0}
+                    className="w-full px-4 py-3 bg-slate-100 border border-slate-200 rounded-xl text-xs text-slate-400 outline-hidden"
                   />
                 </div>
 
@@ -461,7 +459,7 @@ export default function AdminPanel({
                 <textarea
                   rows={2}
                   required
-                  placeholder="Acquire immediately relevant coding skills to coordinate AI models inside automated software pipelines."
+                  placeholder="वारकरी संप्रदायाच्या नियमावलीनुसार पवित्र आळंदी देवाची येथे विनामूल्य निवासी कीर्तन प्रशिक्षण."
                   value={courseForm.description}
                   onChange={(e) => setCourseForm({ ...courseForm, description: e.target.value })}
                   className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 outline-hidden focus:bg-white"
@@ -475,13 +473,13 @@ export default function AdminPanel({
                 onDragLeave={handleDrag} 
                 onDrop={handleDrop}
                 className={`py-6 border-2 border-dashed rounded-2xl flex flex-col items-center justify-center gap-2 cursor-pointer transition-colors ${
-                  dragActive ? 'bg-indigo-50 border-indigo-500 text-indigo-700' : 'bg-slate-50 border-slate-200 text-slate-400 hover:bg-slate-100/30'
+                  dragActive ? 'bg-orange-50 border-orange-500 text-orange-700' : 'bg-slate-50 border-slate-200 text-slate-400 hover:bg-slate-100/30'
                 }`}
                 onClick={() => triggerNotification('Opening local operating system directory picker...')}
               >
-                <UploadCloud className="w-8 h-8 text-slate-400" />
-                <span className="text-xs font-semibold text-slate-600">Simulate Image Drag & Drop</span>
-                <span className="text-[10px] text-slate-400">Strictly converts PNG/JPEG to WebP, auto-resized on upload</span>
+                <UploadCloud className="w-8 h-8 text-orange-600" />
+                <span className="text-xs font-semibold text-slate-600">Simulate Devotional Media Upload</span>
+                <span className="text-[10px] text-slate-400">Upload and optimize Sant images, manuscripts, or hymn sheet diagrams.</span>
               </div>
 
               {/* Syllabus and outcome specs fields */}
@@ -515,7 +513,7 @@ export default function AdminPanel({
               {/* SEO Meta Fields mapping */}
               <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 space-y-4">
                 <span className="text-xs font-bold text-slate-800 block uppercase tracking-wider flex items-center gap-1.5">
-                  <Globe className="w-4 h-4 text-brand-secondary shrink-0" />
+                  <Globe className="w-4 h-4 text-orange-600 shrink-0" />
                   <span>Google Index & SEO Snippet Schema Settings</span>
                 </span>
                 
@@ -524,10 +522,10 @@ export default function AdminPanel({
                     <span className="text-[10px] uppercase font-bold text-slate-500">SEO Custom Meta Title</span>
                     <input
                       type="text"
-                      placeholder="Best Python & Generative AI Bootcamp on MG Road, India"
+                      placeholder="उदा. आळंदी निवासी कीर्तन अभ्यासक्रम - विनामूल्य वारकरी गुरुकुल"
                       value={courseForm.metaTitle}
                       onChange={(e) => setCourseForm({ ...courseForm, metaTitle: e.target.value })}
-                      className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-xs text-slate-800"
+                      className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:ring-1 focus:ring-orange-600"
                     />
                   </div>
                   <div className="space-y-1">
@@ -546,9 +544,9 @@ export default function AdminPanel({
               <div>
                 <button
                   type="submit"
-                  className="w-full py-4 bg-slate-900 hover:bg-brand-primary text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md"
+                  className="w-full py-4 bg-slate-900 hover:bg-orange-655 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
                 >
-                  Publish and Inject Syllabus toLive Solutions Card Layout
+                  Publish and Inject Gurukul Course Layout
                 </button>
               </div>
 
@@ -560,8 +558,8 @@ export default function AdminPanel({
         {activeTab === 'blogs' && (
           <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-xl max-w-4xl mx-auto animate-fade-in">
             <div className="border-b pb-4 mb-6 space-y-1">
-              <h3 className="text-lg font-bold text-slate-800">Resources & Blog Article Scheduler</h3>
-              <p className="text-xs text-slate-400">Queue Career logs and Success stories. Supports scheduled publishing later parameters.</p>
+              <h3 className="text-lg font-bold text-slate-800">Devotional & Sant Literature Post Editor</h3>
+              <p className="text-xs text-slate-400">Publish articles on Warkari sampradaya, Dnyaneshwari commentaries, and historical Alandi Mauli events.</p>
             </div>
 
             <form onSubmit={handleCreateBlog} className="space-y-6">
@@ -572,10 +570,10 @@ export default function AdminPanel({
                   <input
                     type="text"
                     required
-                    placeholder="Agile Ceremonies Mistakes that keep teams stuck"
+                    placeholder="उदा. संत ज्ञानेश्वर महाराज समाधी सोहळा इतिहास"
                     value={blogForm.title}
                     onChange={(e) => setBlogForm({ ...blogForm, title: e.target.value })}
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800"
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:ring-1 focus:ring-orange-600"
                   />
                 </div>
                 
@@ -586,10 +584,10 @@ export default function AdminPanel({
                     onChange={(e) => setBlogForm({ ...blogForm, category: e.target.value as any })}
                     className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 cursor-pointer font-sans"
                   >
-                    <option value="Career Growth">Career Growth consejos</option>
-                    <option value="Industry Trends">Industry Trends analysis</option>
-                    <option value="Success Stories">Success Stories review</option>
-                    <option value="Tips">Actionable Tips & Hacks</option>
+                    <option value="Saints">Saints (संत चरित्र)</option>
+                    <option value="Festival">Festival (वारकरी उत्सव)</option>
+                    <option value="Pothi">Pothi (पवित्र ग्रंथ विवरण)</option>
+                    <option value="History">History (संस्था इतिहास)</option>
                   </select>
                 </div>
               </div>
@@ -599,10 +597,10 @@ export default function AdminPanel({
                 <input
                   type="text"
                   required
-                  placeholder="Review common sprint leakage mistakes and how agile leads can handle them professionally."
+                  placeholder="आषाढी एकादशी व आळंदी कार्तिकी वारीचे आध्यात्मिक महत्त्व सांगणारा लेख."
                   value={blogForm.excerpt}
                   onChange={(e) => setBlogForm({ ...blogForm, excerpt: e.target.value })}
-                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800"
+                  className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:ring-1 focus:ring-orange-600"
                 />
               </div>
 
@@ -611,7 +609,7 @@ export default function AdminPanel({
                 <textarea
                   rows={5}
                   required
-                  placeholder="### 1. The Sprint Commit Myth... \nOur team repeatedly maps stories without verifying dynamic database schemas first..."
+                  placeholder="अद्वैत भक्तीचा अनुपम ठेवा म्हणजेच ज्ञानेश्वरी ग्रंथ होय. संत ज्ञानेश्वरांनी वयाच्या एकाव्या वर्षी हा ग्रंथ लिहिला..."
                   value={blogForm.content}
                   onChange={(e) => setBlogForm({ ...blogForm, content: e.target.value })}
                   className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 font-sans leading-relaxed"
@@ -620,7 +618,7 @@ export default function AdminPanel({
 
               <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 space-y-4">
                 <span className="text-xs font-bold text-slate-800 block uppercase tracking-wider flex items-center gap-1.5">
-                  <Calendar className="w-4 h-4 text-brand-secondary shrink-0" />
+                  <Calendar className="w-4 h-4 text-orange-600 shrink-0" />
                   <span>Release Scheduling Parameters (Publish Later)</span>
                 </span>
                 
@@ -653,9 +651,9 @@ export default function AdminPanel({
               <div>
                 <button
                   type="submit"
-                  className="w-full py-4 bg-slate-900 hover:bg-brand-primary text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md"
+                  className="w-full py-4 bg-slate-900 hover:bg-orange-655 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
                 >
-                  Schedule Resources Post and Update Map
+                  Schedule Devotional Post & Publish
                 </button>
               </div>
 
@@ -667,8 +665,8 @@ export default function AdminPanel({
         {activeTab === 'bookings' && (
           <div className="bg-white rounded-3xl p-6 border border-slate-100 shadow-xl max-w-5xl mx-auto space-y-6 animate-fade-in col-span-1">
             <div className="border-b pb-4 mb-2 space-y-1">
-              <h3 className="text-lg font-bold text-slate-800">Admissions Discovery & Consultation Database Leads</h3>
-              <p className="text-xs text-slate-400">Review schedule slots, email addresses, and toggle confirmation flags in real-time.</p>
+              <h3 className="text-lg font-bold text-slate-800">Gurukul Admission Discovery & Appointment Interviews</h3>
+              <p className="text-xs text-slate-400">Review preordered enrollment schedules of incoming students and candidate interview slots.</p>
             </div>
 
             {bookings.length === 0 ? (

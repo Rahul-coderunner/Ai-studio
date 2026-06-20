@@ -1,583 +1,439 @@
-import { Course, BlogPost, Testimonial, Booking } from './types';
+import { 
+  AdmissionCourse, DnyaneshwariChapter, AbhangBhajan, 
+  DailyRojnishi, DevotionalThought, EventCalendarItem 
+} from './types';
 
-export const FOUNDER_PROFILE = {
-  name: 'Dyaneshwar',
-  title: 'Founder & Head Coach',
-  bio: 'With over 15 years of leadership experience across Fortune 500 tech companies and management consultancies in India and globally, Dyaneshwar founded WeConnect with a simple mission: to bridge the gap between academic theory and real-world executive excellence. He has personally mentored over 2,000+ professionals transit into leadership, product management, and high-growth technical roles.',
-  image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=600&h=600',
-  linkedin: 'https://linkedin.com/in/dyaneshwar-weconnect'
+export const SANSTHAN_HERITAGE = {
+  name: 'वारकरी शिक्षण संस्था',
+  marathiName: 'वारकरी शिक्षण संस्था',
+  location: 'आळंदी देवाची, पुणे, महाराष्ट्र',
+  established: '१९१७ (सद्गुरू जोग महाराज स्थापित)',
+  vision: 'वारकरी संप्रदायाची पवित्र, नैतिक आणि भक्तीपर शिकवण जतन करणे, तिचा प्रसार करणे आणि ती अंगीकारणे. तसेच अत्यंत शिस्तबद्ध निवासी गुरुकुल पद्धतीद्वारे भावी कीर्तनकार, मृदंगाचार्य आणि आध्यात्मिक नेते घडवणे.',
+  history: 'इ.स. १९१७ मध्ये थोर संत सद्गुरु जोग महाराज यांनी पवित्र इंद्रायणी नदीच्या तीरावर आळंदीत या संस्थेची स्थापना केली. संजीवन समाधी ज्ञानेश्वर माउली आणि जगद्गुरू संत तुकाराम महाराज यांची भक्तीपरंपरा अखंडपणे चालू ठेवण्यासाठी संस्थेने गेल्या शतकभरात हजारो विद्यार्थी (विद्यार्थी) घडविले आहेत, की जे आज संपूर्ण महाराष्ट्रभर धर्मजागृतीचे महान कार्य विनामूल्य करत आहेत. संस्थेत राहण्याची व भोजनाची व्यवस्था विनामूल्य असते.',
+  founderName: 'ह.भ.प. सद्गुरु जोग महाराज',
+  founderTitle: 'दिव्य द्रष्टे आणि संस्थात्मक वारकरी शिक्षणाचे जनक',
+  founderBio: 'ह.भ.प. गोपाळराव देवराव जोग, जे सर्वत्र "सद्गुरु जोग महाराज" म्हणून आदरपूर्वक ओळखले जातात, त्यांनी १९१७ मध्ये आळंदीत या गुरुकुलाची स्थापना केली. आधुनिक काळात वारकरी परंपरेचे संरक्षण व संवर्धन करण्यासाठी शास्त्रांचे पद्धतशीर व शिस्तबद्ध प्रशिक्षण आवश्यक आहे हे त्यांनी जाणले होते. त्यांनी त्यांचे संपूर्ण आयुष्य विरक्ती, नैतिक शुद्धता आणि पांडुरंग चरणी समर्पित केले.',
+  founderImage: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=600&h=600'
 };
 
 export const CORE_VALUES = [
   {
-    title: 'Professionalism',
-    description: 'We carry out our advisory training and client support with standard execution, reliable schedules, and complete competence.',
+    title: 'निष्काम सेवा (Nishkam Seva)',
+    description: 'सर्व प्राणिमात्रांमध्ये पांडुरंगाचे रूप पाहून कोणत्याही लोभ किंवा स्वार्थाशिवाय निस्वार्थ भावनेने सेवा करणे.',
     icon: 'ShieldCheck'
   },
   {
-    title: 'Pride',
-    description: 'We take absolute pride in our results, curriculum depth, and in setting up our alumni for extreme career breakthroughs.',
+    title: 'अध्यात्म आणि शास्त्र (Scriptural Mastery)',
+    description: 'ज्ञानेश्वरी, तुकाराम गाथा आणि श्रीमद्भगवद्गीता यांचे शुद्ध व्याकरण व सखोल चिंतनासह शास्त्रोक्त अध्ययन.',
+    icon: 'GraduationCap'
+  },
+  {
+    title: 'सदाचार आणि नियम (Moral Discipline)',
+    description: 'नित्य नियमांचे काटेकोर पालन, शुद्ध शाकाहार, सदाचारी वर्तन आणि अखंड नामस्मरण.',
     icon: 'Award'
+  }
+];
+
+export const DAILY_ROJNISHI: DailyRojnishi[] = [
+  {
+    time: ' पहाटे ०४:३० - ०५:३०',
+    activity: 'काकड आरती आणि नित्यपाठ',
+    marathiActivity: 'काकड आरती आणि नित्यपाठ',
+    significance: 'मुख्य मंदिर गाभाऱ्यात सुस्वर भजनाने ईश्वराला जागृत करणे व सामूहिक नामस्मरण करणे.',
+    icon: 'Bell'
   },
   {
-    title: 'Proactivity',
-    description: 'We study macroeconomic trends, hiring updates, and technical shifts proactively so our learners are always preparing headers ahead.',
+    time: 'पहाटे ०५:३० - ०७:००',
+    activity: 'स्नान आणि ध्यान धारणा',
+    marathiActivity: 'स्नान आणि ध्यान धारणा',
+    significance: 'पवित्र इंद्रायणी नदीत स्नान, त्यानंतर प्राणायाम, योगासने आणि शांत ध्यान साधना.',
+    icon: 'Droplet'
+  },
+  {
+    time: 'सकाळी ०७:३० - ०९:३०',
+    activity: 'ज्ञानेश्वरी पारायण आणि पाठ',
+    marathiActivity: 'ज्ञानेश्वरी पारायण आणि पाठ',
+    significance: 'ज्ञानेश्वरी ग्रंथाचे शुद्ध उच्चारांसह सामूहिक वाचन व अध्याय पाठांतर करणे.',
+    icon: 'BookOpen'
+  },
+  {
+    time: 'सकाळी ०९:३० - १०:३०',
+    activity: 'महाप्रसाद (भोजन)',
+    marathiActivity: 'महाप्रसाद (भोजन)',
+    significance: 'सामूहिक पंगतीमध्ये ईश्वराचा नैवेद्य दाखवून बनवलेला सात्विक शाकाहारी महाप्रसाद ग्रहण करणे.',
+    icon: 'Flame'
+  },
+  {
+    time: 'सकाळी ११:०० - दुपारी ०१:००',
+    activity: 'व्यासपीठ प्रवचन आणि निरूपण',
+    marathiActivity: 'व्यासपीठ प्रवचन आणि निरूपण',
+    significance: 'आध्यात्मिक ग्रंथांमधील कठीण ओव्यांचा व श्लोकांचा अर्थ आणि निरूपण करण्याचे शास्त्र शुद्ध शिक्षण देणे.',
+    icon: 'UserCheck'
+  },
+  {
+    time: 'दुपारी ०१:३० - ०३:३०',
+    activity: 'मृदंग वादन आणि टाळ अभ्यास',
+    marathiActivity: 'मृदंग वादन आणि टाळ अभ्यास',
+    significance: 'पारंपारीक पखवाज (मृदंग) वाजवण्याचे प्रात्यक्षिक आणि टाळ संगतीचा सराव घेणे.',
+    icon: 'Music'
+  },
+  {
+    time: 'दुपारी ०३:४५ - संध्याकाळी ०५:००',
+    activity: 'स्वाध्याय आणि कंठस्थीकरण',
+    marathiActivity: 'स्वाध्याय आणि कंठस्थीकरण',
+    significance: 'नियमित अभंग, गाथा आणि श्लोक पाठांतर व गृहपाठ तपासणे.',
+    icon: 'Heart'
+  },
+  {
+    time: 'संध्याकाळी ०५:३० - ०७:००',
+    activity: 'सामुदायिक संध्या हरिपाठ',
+    marathiActivity: 'सामुदायिक संध्या हरिपाठ',
+    significance: 'ज्ञानेश्वर माउली प्रणीत हरिपाठाचे सामूहिक गायन करून नामस्मरणाची उजळणी करणे.',
+    icon: 'Sun'
+  },
+  {
+    time: 'संध्याकाळी ०७:३० - रात्री ०९:००',
+    activity: 'कीर्तन सेवा आणि नामसंकीर्तन',
+    marathiActivity: 'कीर्तन सेवा आणि नामसंकीर्तन',
+    significance: 'विद्यार्थ्यांद्वारे मंदिरात आलटून-पालटून कीर्तन सादरीकरण व सामूहिक अभंग गायन करणे.',
     icon: 'Users'
+  },
+  {
+    time: 'रात्री ०९:३०',
+    activity: 'सेज आरती आणि विश्राम',
+    marathiActivity: 'सेज आरती आणि विश्राम',
+    significance: 'रात्री देवाची शेवटची आरती करून शांत विश्रांतीसाठी जाणे.',
+    icon: 'Moon'
   }
 ];
 
-export const TIMELINE_MILESTONES = [
+export const ADMISSION_COURSES: AdmissionCourse[] = [
   {
-    year: '2021',
-    title: 'The Spark',
-    description: 'Dyaneshwar leaves his corporate executive gig to formulate WeConnect, tutoring 15 handpinned high-potential candidates.'
+    id: 'kirtan_praveen',
+    title: 'कीर्तन शास्त्र प्रवीण (कथा-कीर्तन शास्त्र परीक्षा)',
+    category: 'कीर्तन शास्त्र (Kirtan)',
+    duration: '२ वर्षे ( निवासी - विनामूल्य)',
+    eligibility: 'वय १५-२५ वर्षे, किमान साक्षरता, शुद्ध शाकाहारी, वारकरी आचरणाची आवड.',
+    description: 'महाराष्ट्रातील प्राचीन व प्रसिद्ध कीर्तन परंपरेचे सखोल शिक्षण. यामध्ये संस्कृत श्लोक, संतांचे अभंग, बोधप्रद कथा आणि वेदान्त निरूपण यांचे शास्त्रशुद्ध संयोजन शिकविले जाते.',
+    syllabus: [
+      'प्रथम सत्र: कीर्तन मांडणी, पूर्वरंग, उत्तररंग आणि सुस्वर गायन पद्धती.',
+      'द्वितीय सत्र: अर्थासह ५० निवडक अभंग कंठस्थ करणे.',
+      'तृतीय सत्र: ज्ञानेश्वरी आणि उपनिषदांमधील दाखल्यांचा अभ्यास.',
+      'चतुर्थ सत्र: ज्येष्ठ आचार्यांच्या मार्गदर्शनाखाली थेट कीर्तन सादरीकरण परीक्षा.'
+    ],
+    instructor: 'ह.भ.प. रामकृष्ण महाराज आळंदीकर',
+    instructorTitle: 'कीर्तन व प्रवचन मुख्य आचार्य',
+    image: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=800'
   },
   {
-    year: '2022',
-    title: 'Official Launch',
-    description: 'WeConnect digital platform goes live. Launches the communication curriculum and technical bootcamp.'
+    id: 'mridanga_vishi',
+    title: 'पखवाज-मृदंग विशारद (मृदंग वादन अभ्यासक्रम)',
+    category: 'मृदंग वादन (Mridanga)',
+    duration: '१ वर्ष (निवासी - विनामूल्य)',
+    eligibility: 'वय १४-२४ वर्षे, तालाची आवड, बोटांची चपळता आणि रोज सराव करण्याची सिद्धता.',
+    description: 'वारकरी भजनात मृदंग (पखवाज) हा प्राण मानला जातो. या अभ्यासक्रमात विद्यार्थ्यांना गजरे उठवणे, भजनी ठेका, तीनताल, केरवा अशा विविध तालांचे सखोल प्रात्यक्षिक मार्गदर्शन दिले जाते.',
+    syllabus: [
+      'महिने १-३: हात ठेवण्याची पद्धत, शुद्ध थाप आणि बोलांचा सराव ("धा", "ती", "टे", "ता" इत्यादी).',
+      'महिने ४-६: दादरा, रुपक आणि वारकरी भजनी ठेक्यावर हुकुमत.',
+      'महिने ७-९: कीर्तनातील लया नियंत्रित करणे आणि गती बदलणे शिकणे.',
+      'महिने १०-१२: कीर्तन आणि भजनात प्रत्यक्षात साथसंगत करण्याची परीक्षा.'
+    ],
+    instructor: 'ह.भ.प. विठ्ठलराव मृदंगाचार्य',
+    instructorTitle: 'मुख्य पखवाजाचार्य व तालशास्त्र प्रमुख',
+    image: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=800'
   },
   {
-    year: '2023',
-    title: '1,000 Alumni Strong',
-    description: 'Crossed the milestone of 1,000+ graduates placed successfully in top tier companies across Bengaluru, Mumbai, and Delhi NCR.'
+    id: 'bhajan_vocal',
+    title: 'भजनी गायन आणि टाळ संगत (पारंपारिक भजनी पद्धत)',
+    category: 'भजन व टाळ (Bhajan & Taal)',
+    duration: '६ महिने (निवासी - विनामूल्य)',
+    eligibility: 'वय १४-३० वर्षे, सुमधुर आवाज किंवा भक्ती गीतांची प्राथमिक आवड.',
+    description: 'पारंपारिक वारकरी भजनी गायन पद्धती, रागदारीवर आधारित अभंग, आणि भजनात अचूक लयीत टाळ वाजवण्याचे शास्त्रशुद्ध शिक्षण.',
+    syllabus: [
+      'भाग १: यमन, भैरवी आणि बिहाग रागातील प्राथमिक कंठसाधना सराव.',
+      'भाग २: संथ हरिपाठ आणि नित्यपाठाचे सुस्वर गायन पद्धत.',
+      'भाग ३: वेगवेगळ्या लयीत आणि वेगात टाळ/चिपर चिमटा वाजवून साथसंगत करणे.'
+    ],
+    instructor: 'ह.भ.प. ज्ञानेश्वर महाराज देहूकर',
+    instructorTitle: 'अभंग गायन व स्वरसाधना आचार्य',
+    image: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=800'
   },
   {
-    year: '2024',
-    title: 'Leadership Circle Launch',
-    description: 'Introduced high-impact executive presence Masterclasses for mid-career managers searching for senior corporate roles.'
-  },
-  {
-    year: '2025',
-    title: 'AI and New-Age Technical Labs',
-    description: 'Introduced specialized Technical Product Management and AI Strategy curricula to address immediate industry standard shifts.'
+    id: 'prasthantrayi_adhyayan',
+    title: 'प्रस्थानत्रयी आणि संत साहित्य अध्ययन (शास्त्र अभ्यास)',
+    category: 'प्रस्थानत्रयी (Prasthantrayi)',
+    duration: '२ वर्षे ( निवासी - विनामूल्य)',
+    eligibility: 'वय १६+ वर्षे, मराठीचे उत्तम ज्ञान आणि आध्यात्मिक ग्रंथांची आवड.',
+    description: 'वारकरी संप्रदायातील महान ग्रंथांचे सखोल अध्ययन. ज्ञानेश्वरी (भावार्थ दीपिका), तुकाराम गाथा, प्रस्थानत्रयी आणि भगवद्गीतेचा सखोल अभ्यास.',
+    syllabus: [
+      'वर्ष १: ज्ञानेश्वरीचे पहिले ९ अध्याय आणि त्यांचा भावार्थासह व ओवीरूप अभ्यास.',
+      'वर्ष २: वेदान्त विचार आणि संत तुकाराम महाराजांच्या गाथेतील जीवनदर्शन तुलनात्मक अभ्यास.'
+    ],
+    instructor: 'आचार्य डॉ. मारुती महाराज शास्त्री',
+    instructorTitle: 'वेदान्ताचार्य व संत साहित्य शास्त्र व्याख्याते',
+    image: 'https://images.unsplash.com/photo-1561361041-c96a291b9978?q=80&w=800'
   }
 ];
 
-export const INITIAL_COURSES: Course[] = [
+export const DNYANESHWARI_DATA: DnyaneshwariChapter[] = [
   {
-    id: 'c1',
-    title: 'Soft Skills Training',
-    category: 'Soft Skills',
-    duration: '4 Weeks',
-    level: 'Beginner',
-    description: 'Develop your interpersonal attributes, personality traits, and social graces. This solutions module transforms everyday workspace interactions and empowers team cohesion.',
-    price: 9999,
-    rating: 4.8,
-    reviewsCount: 154,
-    image: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&q=80&w=800',
-    instructorName: 'Sneha Rao',
-    instructorRole: 'Behavioral Psychologist & Leadership Coach',
-    syllabus: [
-      'Week 1: Mindset & Empathy - The Foundations of Social Intelligence',
-      'Week 2: Listening Competence - Passive vs Active Feedback loops',
-      'Week 3: Assertive Expression - Conveying ideas clearly without conflict',
-      'Week 4: Influence & Team Bonding - Leveraging positive interpersonal cues'
-    ],
-    outcomes: [
-      'Establish clean, constructive dialogue habits across multi-functional cohorts',
-      'Learn standard active-listening framework structures to diffuse workplace friction',
-      'Acquire simple verbal keys to project alignment and high engagement capability',
-      'Validate your interpersonal skills profile with tailored peer assessments'
+    id: 1,
+    title: 'अर्जुन-विषाद योग (Arjuna Vishada Yoga)',
+    marathiTitle: 'अध्याय पहिला: अर्जुनविषादयोग',
+    totalVerses: 85,
+    description: 'आध्यात्मिक युद्धाची पार्श्वभूमी. ज्ञानेश्वर माउलींनी पहिल्या अध्यायाची सुरुवात बुद्धीचे दैवत असलेल्या श्री गणेश आणि सद्गुरू कृपेला परमवंदन करून केली आहे.',
+    keyTakeaway: 'कुरुक्षेत्राचे रणांगण हे आपल्या स्वतःच्या अंतःकरणाचे प्रतीक आहे. गीतेचा संदेश संभ्रमातून बाहेर पडून सत्याची कास धरण्यास प्रेरित करतो.',
+    verses: [
+      {
+        id: 'dn_1_1',
+        verseNumber: '१_१',
+        original: 'ॐ नमोजी आद्या । वेदप्रतिपाद्या । जय जय स्वसंवेद्या । आत्मरूपा ॥',
+        translation: 'OM! Salutations to the primordial Lord, who is established by the Vedas. Glory be to the self-realized soul which shines in pure self-evident grace.',
+        meaning: 'माउली म्हणतात: हे वेदांनी प्रतिपादन केलेल्या आदिपुरुषा, आत्मरूपा तुझा जयजयकार असो. हा ग्रंथ सुरू करताना मी प्रथम तुला आणि श्री सद्गुरूंच्या दिव्य चैतन्याला वंदन करतो.'
+      },
+      {
+        id: 'dn_1_2',
+        verseNumber: '१_२',
+        original: 'देवा तूंचि गणेशु । सकळमतिप्रकाशु । म्हणे निवृत्तिदासु । अवधारिंतो ॥',
+        translation: 'O Lord, You are indeed Ganesha, the sole illuminator of all clean intellects! Thus says the humble servant of Nivruttinath Maharaj.',
+        meaning: 'सद्गुरू निवृत्तिनाथांचे दास ज्ञानेश्वर महाराज म्हणतात: हे देवा, तूच बुद्धिप्रकाश देणारा श्री गणेश आहेस. तुझ्या कृपेने बुद्धीचे सर्व पटल प्रकाशित होते.'
+      }
     ]
   },
   {
-    id: 'c2',
-    title: 'Behavioral Skills Training',
-    category: 'Soft Skills',
-    duration: '4 Weeks',
-    level: 'Intermediate',
-    description: 'Optimize behavioral habits, group dynamics, conflict resolution pathways, and professional composure under high-stress corporate scenarios.',
-    price: 12999,
-    rating: 4.9,
-    reviewsCount: 88,
-    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=800',
-    instructorName: 'Sneha Rao',
-    instructorRole: 'Behavioral Psychologist & Leadership Coach',
-    syllabus: [
-      'Week 1: Stress & Regulation - Neurological triggers in peer meetings',
-      'Week 2: Collaborative Alignment - Navigating difficult boss or client dynamics',
-      'Week 3: Conflict Mitigation - Decoupling professional feedback from emotional ego',
-      'Week 4: Leadership Behaviors - Modeling poise, accountability, and standard execution'
-    ],
-    outcomes: [
-      'Control mental and physiological stress triggers during critical board meetings',
-      'Develop constructive techniques to negotiate project roadblocks professionally',
-      'Apply non-defensive language structures to respond to critical corporate auditing',
-      'Establish reliable habits of deliberate communication and feedback tracking'
+    id: 2,
+    title: 'सांख्य योग (Sankhya Yoga)',
+    marathiTitle: 'अध्याय दुसरा: सांख्ययोग',
+    totalVerses: 72,
+    description: 'भगवान श्रीकृष्ण अर्जुनाला आत्म्याचे अमरत्व आणि आत्मज्ञानी पुरुषाची (स्थितप्रज्ञ) लक्षणे समजावून सांगतात.',
+    keyTakeaway: 'देह नाशवंत आहे पण आत्मा अमर आहे. जुनी वस्त्रे टाकून नवीन धारण करावीत तसाच आत्मा देहांतर करतो. त्यामुळे आपले विहित कर्तव्य फळाची आशा न धरता करत राहावे.',
+    verses: [
+      {
+        id: 'dn_2_11',
+        verseNumber: '२_११',
+        original: 'जैसें जीर्ण वस्त्र थोंकिजे । मग नूतन वेढिजे । तैसें देहांतरा स्वीकारिजे । चैतन्येसी ॥',
+        translation: 'Just as old, decayed garments are discarded and brand new ones are worn, so does the eternal spirit accept new physical bodies.',
+        meaning: 'ज्याप्रमाणे माणूस जुने कपडे टाकून नवीन कपडे परिधान करतो, त्याचप्रमाणे अविनाशी आत्मा जुना देह सोडून नवीन जन्म स्वीकारतो. मृत्यू हा केवळ बाह्य देहाचा बदल आहे.'
+      }
     ]
   },
   {
-    id: 'c3',
-    title: 'Public Speaking',
-    category: 'Soft Skills',
-    duration: '6 Weeks',
-    level: 'Intermediate',
-    description: 'Conquer speech anxiety. Learn voice modulation, pacing, posture control, and audience engagement keys to deliver memorable addresses.',
-    price: 14999,
-    rating: 4.9,
-    reviewsCount: 120,
-    image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80&w=800',
-    instructorName: 'Dyaneshwar',
-    instructorRole: 'Founder & Head Coach',
-    syllabus: [
-      'Week 1-2: Overcoming Glottis Tightness & Audience Stage Phobia',
-      'Week 3: Voice Pitching, Cadence Controls, and Strategic Pause Placement',
-      'Week 4: Posture, Gestures, and Spatial Presence across Virtual or Physical Stages',
-      'Week 5-6: Framing Hook Openings, Core Structures, and Compelling CTA Conclusions'
-    ],
-    outcomes: [
-      'Deliver high-stakes keynotes confidently without reading from raw scripts',
-      'Adapt voice modulation to capture focus and command immediate workspace authority',
-      'Master visual stage presence frameworks that signal professional gravitas',
-      'Conduct 3 complete simulated speech reviews with direct expert audio analysis'
+    id: 6,
+    title: 'ध्यान योग (Dhyana Yoga / योगशास्त्र अभ्यास)',
+    marathiTitle: 'अध्याय सहावा: आत्मसंयमयोग',
+    totalVerses: 47,
+    description: 'ज्ञानेश्वरीतील अत्यंत अभ्यासपूर्ण असा प्रसिद्ध अध्याय. यामध्ये ज्ञानेश्वर माउलींनी कुंडलिनी शक्तीची जागृती, आसने आणि प्राणायामाचे अत्यंत बारकाईने वर्णन केले आहे.',
+    keyTakeaway: 'प्राणायाम आणि आसनांच्या माध्यमातून इंद्रियांना अंतर्मुख करून चंचल मनाला मूळ स्वरूपात विलीन करणे हाच योगाचा परम उद्देश आहे.',
+    verses: [
+      {
+        id: 'dn_6_16',
+        verseNumber: '६_१६',
+        original: 'जेथ चित्त आपुलिये पाठीं । येउनि बैसें गा कोठीं । मग ते आपोआप मिठी । मिळेचि मिळे ॥',
+        translation: 'When the wandering mind turns around and sits quietly in its inner chamber, it automatically merges with the Supreme Divine.',
+        meaning: 'जेव्हा वारा विरून जातो आणि मन मागे वळून स्वतःच्या हृदयरूपी कोठीत शांत बसते, तेव्हा जीवाचा शिवाशी आपोआप सुमधुर मिलाफ होतो.'
+      }
     ]
   },
   {
-    id: 'c4',
-    title: 'Selling Skills',
-    category: 'Soft Skills',
-    duration: '6 Weeks',
-    level: 'Intermediate',
-    description: 'Master sales psychological triggers, lead conversions, client rapport building, high-ticket pitch workflows, and objection closing strategies.',
-    price: 15999,
-    rating: 4.7,
-    reviewsCount: 95,
-    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=800',
-    instructorName: 'Amit Sharma',
-    instructorRole: 'Sales Growth Catalyst & Corporate Consultant',
-    syllabus: [
-      'Week 1: Mindset of Advisor - Moving from product pitching to consultation',
-      'Week 2: Deep Diagnostics & Discovery - Unearthing buyer pain-points',
-      'Week 3: Value Proposition Alignment - Customizing solutions for distinct business levels',
-      'Week 4: Objection Defusal - Resolving price concerns and contract delays',
-      'Week 5-6: Closing Formats, Negotiation Parameters, and Relationship Renewal loops'
-    ],
-    outcomes: [
-      'Adopt a consultative mindset that builds rapid professional client trust',
-      'Map client issues structurally to deliver highly responsive solution pitches',
-      'Handle pricing pushback and scope alignments with clear value-led responses',
-      'Build scalable pipelines and tracking frameworks for client follow-ups'
+    id: 9,
+    title: 'राजविद्या राजगुह्य योग (Raja Vidya Rasa Guhya)',
+    marathiTitle: 'अध्याय नववा: राजविद्याराजगुह्ययोग',
+    totalVerses: 34,
+    description: 'ज्ञानयुक्त भक्तीचा श्रेष्ठ मार्ग. माउली या अध्यायात स्पष्ट करतात की केवळ प्रेमाने अर्पण केलेले पान, फूल, फळ किंवा पाणी देखील ईश्वर आनंदाने स्वीकारतो.',
+    keyTakeaway: 'जे निस्सीम भक्त अनन्याने ईश्वराचे चिंतन करतात, त्यांच्या योगक्षेमाची (संरक्षण व सुखसोई) संपूर्ण जबाबदारी स्वतः परमात्मा स्वतःच्या शिरावर घेतो.',
+    verses: [
+      {
+        id: 'dn_9_22',
+        verseNumber: '९_२२',
+        original: 'अहो जे आवडी एकले । मजचि जाहले । त्यांचे सर्वस्व मी वहिले । वाहें तान्हयाचे ॥',
+        translation: 'Indeed, those who love Me and merge into Me completely—I bear all their daily burdens and responsibilities on My own shoulders, just as a mother carries her infant.',
+        meaning: 'जे भक्त अनन्य भावाने मला शरण आले आहेत, त्यांचा संपूर्ण भार मी स्वतः वाहतो. ज्याप्रमाणे माता आपल्या नवजात अर्भकाचे संपूर्ण संगोपन स्वतः करते, अगदी तसेच माझे आणि भक्ताचे नाते आहे.'
+      }
     ]
   },
   {
-    id: 'c5',
-    title: 'Start-up Coaching',
-    category: 'Leadership',
-    duration: '8 Weeks',
-    level: 'Advanced',
-    description: 'Acquire early-stage founder frameworks: raising capital, initial product market fit diagnostics, agile scaling, and investor relationship management.',
-    price: 29999,
-    rating: 4.9,
-    reviewsCount: 74,
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800',
-    instructorName: 'Dyaneshwar',
-    instructorRole: 'Founder & Head Coach',
-    syllabus: [
-      'Week 1-2: Product-Market Fit (PMF) Metrics & Audience Diagnostic Iterations',
-      'Week 3-4: Pitch deck preparation & storytelling for venture capital',
-      'Week 5-6: Lean operational structures, hiring, and unit economics validation',
-      'Week 7-8: Strategic marketing channels, scalable growth, and client traction'
-    ],
-    outcomes: [
-      'Develop robust startup models validated by actual target audience data',
-      'Design clean pitch structures featuring concise financial metrics and growth lines',
-      'Configure lean sprint goals to release fast MVP products without budget runaways',
-      'Access highly useful templates for cap-table tracking and pitch narratives'
-    ]
-  },
-  {
-    id: 'c6',
-    title: 'Emotional Intelligence',
-    category: 'Soft Skills',
-    duration: '4 Weeks',
-    level: 'Intermediate',
-    description: 'Enhance self-awareness, active empathy, emotional self-regulation, and relational mastery. Vital for cross-collaborative project leaders.',
-    price: 11999,
-    rating: 4.8,
-    reviewsCount: 65,
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800',
-    instructorName: 'Sneha Rao',
-    instructorRole: 'Behavioral Psychologist & Leadership Coach',
-    syllabus: [
-      'Week 1: Intrapersonal Mastery - Identifying implicit emotional triggers',
-      'Week 2: Regulation & Reflection - Pausing between stimuli and professional responses',
-      'Week 3: Empathy Engineering - Reading subtle group dynamics and micro-expressions',
-      'Week 4: Strategic Relationship Management - Inspiring team trust and cohesion'
-    ],
-    outcomes: [
-      'Formulate professional responses during moments of high workspace tension',
-      'Build strong, trusted human bridges across diverse department levels',
-      'Read and diffuse client anxiety or peer resentment before it impacts delivery',
-      'Establish a daily mental check routine to maintain peak cognitive execution'
-    ]
-  },
-  {
-    id: 'c7',
-    title: 'Problem Solving',
-    category: 'Technical',
-    duration: '6 Weeks',
-    level: 'Intermediate',
-    description: 'Rigorous frameworks for diagnostic brainstorming, root-cause calculations, analytical decision modeling, and scalable solution implementation.',
-    price: 14499,
-    rating: 4.8,
-    reviewsCount: 110,
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800',
-    instructorName: 'Dyaneshwar',
-    instructorRole: 'Founder & Head Coach',
-    syllabus: [
-      'Week 1-2: Root-Cause Auditing - MECE tree splits & the 5-Whys framework',
-      'Week 3: Analytical Modeling - Weighing tradeoffs through quantitative score matrices',
-      'Week 4: Creative Brainstorming - Lateral thinking & constraints-based design',
-      'Week 5-6: Operational Rollout - Scaling prototype fixes to global user models'
-    ],
-    outcomes: [
-      'Formulate MECE (Mutually Exclusive, Collectively Exhaustive) diagnosis charts',
-      'Draft highly convincing, data-backed solution pitches for executive review',
-      'Minimize blind spots and errors during complex system upgrades',
-      'Build robust checklists for operational problem resolution tracking'
-    ]
-  },
-  {
-    id: 'c8',
-    title: 'Presentation Skills',
-    category: 'Soft Skills',
-    duration: '4 Weeks',
-    level: 'Beginner',
-    description: 'Design premium visual slide decks and couple them with high-stakes speaking flow. Structural outline for presenting concepts to directories.',
-    price: 10499,
-    rating: 4.7,
-    reviewsCount: 134,
-    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800',
-    instructorName: 'Amit Sharma',
-    instructorRole: 'Sales Growth Catalyst & Corporate Consultant',
-    syllabus: [
-      'Week 1: Visual Storyboards - Storytelling hierarchies that replace boring paragraphs',
-      'Week 2: Slide Designing - Layout balance, color emphasis, and visual graphs',
-      'Week 3: Verbal Delivery Integration - Coordinating physical gestures with screen shifts',
-      'Week 4: Q&A Handlings - Standing firm and addressing live hostile peer questions'
-    ],
-    outcomes: [
-      'Create clean, professional slide structures presenting complex analytical metrics',
-      'Deliver fluid, engaging presentations that coordinate narration with visuals',
-      'Address demanding Q&A sessions from senior stakeholders with complete composure',
-      'Receive pre-configured executive slide templates ready for instant deployment'
-    ]
-  },
-  {
-    id: 'c9',
-    title: 'Time Management',
-    category: 'Soft Skills',
-    duration: '3 Weeks',
-    level: 'Beginner',
-    description: 'Combat burnout. Master operational prioritization grids, focus cycles, task delegations, and boundary setting for professional sustainability.',
-    price: 7999,
-    rating: 4.6,
-    reviewsCount: 142,
-    image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&q=80&w=800',
-    instructorName: 'Amit Sharma',
-    instructorRole: 'Sales Growth Catalyst & Corporate Consultant',
-    syllabus: [
-      'Week 1: Priority Diagnostics - Decoupling the urgent from the truly strategic',
-      'Week 2: Deep Work Routines - Mitigating Slack noise, notification pings, & distraction loops',
-      'Week 3: Boundary Diplomacy - Saying "no" constructively to preserve code execution quality'
-    ],
-    outcomes: [
-      'Establish balanced work rhythms that prevent mental burnout and task spillover',
-      'Decline unstrategic commitments elegantly using proven diplomacy scripts',
-      'Optimize daily deep work schedules to deliver high-quality project tasks faster',
-      'Formulate robust, personal daily habits aligned with priority goals'
-    ]
-  },
-  {
-    id: 'c10',
-    title: 'Leadership Development',
-    category: 'Leadership',
-    duration: '8 Weeks',
-    level: 'Advanced',
-    description: 'Transition from manager to visionary leader. Focus on strategic planning, human delegation, remote team alignment, and cultural engineering.',
-    price: 24999,
-    rating: 4.9,
-    reviewsCount: 198,
-    image: 'https://images.unsplash.com/photo-1473186578172-c141e6798cf4?auto=format&fit=crop&q=80&w=800',
-    instructorName: 'Dyaneshwar',
-    instructorRole: 'Founder & Head Coach',
-    syllabus: [
-      'Week 1-2: Defining the Vision - Translating board expectations to team milestones',
-      'Week 3-4: Strategic Delegation - Matching employee parameters to the correct task size',
-      'Week 5-6: Motivation & Morale - Cultivating ownership and low attrition team environments',
-      'Week 7-8: Cultural Architecture - Building frameworks of extreme accountability'
-    ],
-    outcomes: [
-      'Transition smoothly from manual task execution to macro-level team tracking',
-      'Delegate critical projects with solid safety blocks and checklist reviews',
-      'Create high-responsiveness workspaces that attract and retain skilled professionals',
-      'Acquire customizable 1-on-1 employee sync sheets and review models'
-    ]
-  },
-  {
-    id: 'c11',
-    title: 'Business Etiquette',
-    category: 'Soft Skills',
-    duration: '4 Weeks',
-    level: 'Beginner',
-    description: 'Navigate boardroom codes, internal diplomacy, high-level business meals, international communication style matching, and corporate code of conduct.',
-    price: 8999,
-    rating: 4.8,
-    reviewsCount: 82,
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800',
-    instructorName: 'Sneha Rao',
-    instructorRole: 'Behavioral Psychologist & Leadership Coach',
-    syllabus: [
-      'Week 1: Corporate Dressing & Grooming - The semiotics of executive styling',
-      'Week 2: Written Diplomacy - Establishing absolute poise over Slack, Emails, and Notes',
-      'Week 3: International Cultures - Adapting to North American, European, and Asian business norms',
-      'Week 4: Dining & Networking Composure - Managing conversations during executive meets'
-    ],
-    outcomes: [
-      'Signal status and refinement immediately upon entering executive spaces',
-      'Draft highly polished, diplomatic business emails that elicit fast responses',
-      'Navigate multi-cultural meetings without awkward timing errors and custom misalignments',
-      'Develop complete mastery over written, verbal, and physical boardroom habits'
-    ]
-  },
-  {
-    id: 'c12',
-    title: 'Communication Skills',
-    category: 'Soft Skills',
-    duration: '6 Weeks',
-    level: 'Intermediate',
-    description: 'The foundation of all career advancement. Learn active listening, precise business writing, structured responses, and assertive alignment speaking.',
-    price: 12499,
-    rating: 4.9,
-    reviewsCount: 224,
-    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800',
-    instructorName: 'Sneha Rao',
-    instructorRole: 'Behavioral Psychologist & Leadership Coach',
-    syllabus: [
-      'Week 1-2: Verbal Clarity - Eliminating filler words and articulating ideas concisely',
-      'Week 3: Structural Presentation - Expressing arguments using logic grids',
-      'Week 4: Assertiveness vs Aggressiveness - Direct talking with respectful tone weights',
-      'Week 5-6: Executive Summaries - Synthesizing data for brief supervisor checks'
-    ],
-    outcomes: [
-      'Convey complex technical concepts to non-technical directors without any jargon',
-      'Structure every response logically to respect valuable meeting timelines',
-      'Speak assertively with appropriate pacing and tone emphasis',
-      'Create exact status updates that build immediate project progress confidence'
-    ]
-  },
-  {
-    id: 'c13',
-    title: 'Entrepreneurship Development',
-    category: 'Leadership',
-    duration: '10 Weeks',
-    level: 'Advanced',
-    description: 'For future enterprise leaders. Learn company incorporation blueprints, cash flow statements, sales pipeline setups, and product launch mechanics.',
-    price: 34999,
-    rating: 4.9,
-    reviewsCount: 52,
-    image: 'https://images.unsplash.com/photo-1531535934027-667f6db8a8ae?auto=format&fit=crop&q=80&w=800',
-    instructorName: 'Dyaneshwar',
-    instructorRole: 'Founder & Head Coach',
-    syllabus: [
-      'Week 1-2: Visioning & Incorporation - Tax structures, equity splitting, and legal files',
-      'Week 3-4: Unit Economics - Pricing formulas, runway calculations, and break-even points',
-      'Week 5-7: Sales Pipelines & Launch Planning - Marketing and sales sequence tracking',
-      'Week 8-10: Operations Scaling - Recruiting core teams, configuring systems, and managing clients'
-    ],
-    outcomes: [
-      'Construct a complete, functional business blueprint ready for client acquisition',
-      'Analyze cash flow statements and calculate burn rates with absolute precision',
-      'Set up and monitor sales software and early pipeline outreach automation',
-      'Obtain standardized legal and financial checklist sheets for founders'
-    ]
-  },
-  {
-    id: 'c14',
-    title: 'Personal Effectiveness',
-    category: 'Soft Skills',
-    duration: '4 Weeks',
-    level: 'Intermediate',
-    description: 'Unlock peak cognitive agency. Work on habit loop restructuring, self-motivation hacks, public accountability metrics, and focused daily routines.',
-    price: 11499,
-    rating: 4.7,
-    reviewsCount: 102,
-    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800',
-    instructorName: 'Sneha Rao',
-    instructorRole: 'Behavioral Psychologist & Leadership Coach',
-    syllabus: [
-      'Week 1: Habit Triggers & Restructuring - Designing behavioral feedback loops',
-      'Week 2: Attention Preservation - Controlling screen dependency and dopamine triggers',
-      'Week 3: Deep Focus Routines - Maintaining prolonged attention on strategic goals',
-      'Week 4: Performance Auditing - Rigorous tracking of weekly achievement metrics'
-    ],
-    outcomes: [
-      'Reconfigure daily habit loops to consistently prioritize strategic growth tasks',
-      'Build long-term mental resilience against distraction and burnouts',
-      'Establish a solid, predictable, and highly disciplined daily schedule',
-      'Deploy custom tracking scoreboards to audit personal productivity levels'
+    id: 18,
+    title: 'मोक्ष-संन्यास योग आणि पसायदान (Pasayadan)',
+    marathiTitle: 'अध्याय अठरावा: मोक्षसंन्यासयोग (पसायदान)',
+    totalVerses: 78,
+    description: 'ज्ञानेश्वरीचा सुवर्ण मुकुट. ग्रंथ पूर्ण झाल्यावर ज्ञानेश्वर माउलींनी आपले सद्गुरू श्री निवृत्तिनाथांकडे संपूर्ण जगाच्या कल्याणासाठी "पसायदान" च्या माध्यमातून विश्वशांती व मांगल्याचा आशिर्वाद मागितला आहे.',
+    keyTakeaway: 'स्वतःसाठी काहीही न मागता संपूर्ण विश्वातील प्राणिमात्रांचे दुःख दूर व्हावे, दुर्जनांची बुद्धी सुधारावी आणि सर्वांच्या जीवनात सुख आणि मैत्री नांदावी हीच पसायदानाची परम मागणी आहे.',
+    verses: [
+      {
+        id: 'dn_18_p1',
+        verseNumber: 'पसायदान १',
+        original: 'आता विश्वात्मके देवे । yeणे वाग्यज्ञे तोषावे । तोषोनि मज द्यावे । पसायदान हे ॥',
+        translation: 'Now may the Cosmic Divine Lord be pleased with this sacrifice of sacred literary words. And being pleased, may He grant me this grace-request (Pasayadan).',
+        meaning: 'आता विद्वानांच्या आणि विश्वाच्या रूपाने नटलेल्या देवाने माझ्या या ग्रंथ रूपी वाग्यज्ञाने प्रसन्न व्हावे आणि प्रसन्न होऊन मला हा आशिर्वाद (पसायदान) द्यावा.'
+      },
+      {
+        id: 'dn_18_p2',
+        verseNumber: 'पसायदान २',
+        original: 'जे खळांची व्यंकटी सांडो । तया सत्कर्मी रती वाढो । भूतां परस्परे पडो । मैत्र जीवांचे ॥',
+        translation: 'May the crookedness of wicked minds drop away. May their hearts find pure delight in performing noble, selfless acts. And may all living beings be bound by cordial soul-friendship.',
+        meaning: 'दुर्बुद्धी असणाऱ्या लोकांची कुटिलता नाहीशी होवो, त्यांची सत्कर्मात आवड वाढो आणि सर्व प्राणिमात्रांमध्ये एकमेकांविषयी जीवलग मित्रांप्रमाणे स्नेह निर्माण होवो.'
+      },
+      {
+        id: 'dn_18_p3',
+        verseNumber: 'पसायदान ३',
+        original: 'दुरितांचे तिमिर जावो । विश्व स्वधर्मसूर्ये पाहो । जो जे वांच्छील तो ते लाहो । प्राणिजात ॥',
+        translation: 'May the deep darkness of sin and ignorance melt away. May the sun of moral duty and self-religion light up the world. And may whatever is desired by any creature be granted immediately.',
+        meaning: 'पाप आणि अज्ञानाचा अंधकार दूर होवो. संपूर्ण जगाला स्वधर्माचा सूर्य प्रकाशित करो आणि जो प्राणी जे काही योग्य इच्छित असेल त्याला ते प्राप्त होवो.'
+      },
+      {
+        id: 'dn_18_p4',
+        verseNumber: 'पसायदान ४',
+        original: 'वर्षत सकळ मंगळी । ईश्वरनिष्ठांची मांदियाळी । अनवरत भूमंडळी । भेटतु भूतां ॥',
+        translation: 'May clusters of absolute God-devotees, who are continuous showers of auspicious blessings, walk this Earth and meet all living creatures constantly.',
+        meaning: 'कल्याणकारी मंगलाचा वर्षाव करणारे ईश्वरनिष्ठ सज्जनांचे समूह या पृथ्वीतलावर सर्व प्राण्यांना सतत भेटत राहोत, जेणेकरून सृष्टी सुखी होईल.'
+      }
     ]
   }
 ];
 
-export const INITIAL_BLOGS: BlogPost[] = [
+export const BHAJAN_DATA: AbhangBhajan[] = [
   {
-    id: 'b1',
-    title: 'Navigating the Indian Tech Job Market: 2026 Developer Survival Guide',
-    category: 'Industry Trends',
-    excerpt: 'With shifting requirements and global macroeconomic changes, landing a premier tech role in cities like Bengaluru and Hyderabad requires a new tactical approach. Here is what recruiters are really looking for.',
-    isFeatured: true,
-    author: 'Dyaneshwar',
-    date: 'May 12, 2026',
-    readTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=1200',
-    content: `
-The tech job landscape across India's top hubs (Bengaluru, Hyderabad, Pune, Delhi NCR) has fundamentally shifted. The days of getting 5 offers simply by memorizing standard LeetCode scripts or boilerplate react templates are behind us. 
-
-In 2026, recruiters have leveled up. Organizations are operating with leaner headcount parameters and expect "Force Multiplier" qualities even from mid-level engineers.
-
-### 1. The Death of the "Pure Coder"
-Companies are actively avoiding engineers who just take tickets, convert them to code, and slide them across the table. They need professionals who:
-* **Deeply Understand Business Outcomes:** Can you explain how your refactoring of the notification service directly improved cart conversion by 1.2%?
-* **Demonstrate High Agency:** If you notice a logical mismatch in the API specification, do you schedule a quick Sync with the Product Manager to rectify it, or do you code it regardless and complain during QA?
-
-### 2. High Demand for System & Architecture Competency
-Interview loops now prioritize Low-Level and High-Level System Design (LLD/HLD) early in the gating process.
-* **Why?** Poor architecture decisions cost companies millions in cloud bills and maintenance hours. Showing you understand trade-offs between SQL indexing, NoSQL partition keys, and Redis caching makes you an instant standout.
-
-### 3. Exec Presence is the Ultimate Edge
-If you can architect a system, code it flawlessly, **and** present it to a non-technical director with clear, conversational English and slides, you are in the top 1% of candidate evaluations.
-
-**Actionable Step:** Stop building standard clones for your portfolio. Build real, deployable microservice templates that solve a specific problem, document the architectural constraints, and write a neat Medium or LinkedIn log explaining your engineering choices.
-    `
+    id: 'abhang_1',
+    title: 'Roop Pahata Lochani (रूप पाहता लोचनी)',
+    marathiTitle: 'रूप पाहता लोचनी सुख झाले वो साजणी',
+    saint: 'Sant Dnyaneshwar Maharaj',
+    lyrics: `रूप पाहता लोचनी । सुख झाले वो साजणी ॥ १ ॥
+तो हा विठ्ठल बरवा । तो हा माधव बरवा ॥ २ ॥
+बहुतां सुकृतांची जोडी । म्हणून विठ्ठली आवडी ॥ ३ ॥
+सर्व सुखाचे आगरु । बाप रखुमादेवीवरु ॥ ४ ॥`,
+    translation: 'Looking upon this supreme beauty of my Panduranga, my eyes have experienced eternal, absolute bliss, O my dear companion! Good indeed is this Vitthal, sweet is this Madhava. I have found Him after lifetimes of moral merits. He is the ocean of all ultimate joy, the Lord of Mother Rakhumai.',
+    rag: 'Raga Bhupali (भूप)',
+    tall: 'Bhajani Tala / Kerwa (भजनी ठेका)',
+    audioPreset: 'peaceful'
   },
   {
-    id: 'b2',
-    title: '5 Communication Soft Skills That Will Double Your Promotion Likelihood',
-    category: 'Career Growth',
-    excerpt: 'Many brilliant developers and leads stay stuck at individual contributor tiers because they communicate like compilers instead of leaders. Learn how simple structural shifts in your talking can alter your trajectory.',
-    author: 'Sneha Rao',
-    date: 'May 05, 2026',
-    readTime: '4 min read',
-    image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800',
-    content: `
-It’s a painful but common industry reality: the hardest worker is rarely the one who gets promoted to Manager, Director, or Principal levels. 
-
-Promotions are decisions made in rooms you aren't in, by leaders who don't read your git commits. Their perception of you is driven by **how you communicate** during weekly check-ins, status reports, and stakeholder alignment calls.
-
-Here are the 5 essential communication shifts you need to make to signal you are ready to lead:
-
-### 1. Lead with the Summary (The Minto Pyramid Principle)
-**Bad Habit:** Taking 10 minutes to explain historical context, server failures, database lockups, and finally presenting the conclusion.
-**Executive Shift:** Lead with the result, then break down the details if asked. 
-* *"Our weekly deployment was delayed by 2 hours due to a database locking error. It is fully resolved, and we have created a secondary read-replica to prevent future occurrences. Here are the three reasons why it occurred..."*
-
-### 2. Stop using Passive/Victim Words
-Eliminate phrases like:
-* *"I was told to..."* (Sounds like you have zero context or agency)
-* *"We will try to have it done..."* (Indicates uncertainty and low accountability)
-* **Instead, use:** *"I have aligned with product to prioritize..."* and *"Our commitment is to deploy on..."*
-
-### 3. Translate Tech Metrics to Business Values
-When speaking to high-level managers, translation is key:
-* Instead of: *"We decreased database query speeds by 300ms."*
-* Say: *"Our database optimization reduced search loading times, which is projected to increase search-to-cart clicks by up to 4%."*
-
-### 4. Direct Actionable Escalations
-When flagging a blocker, never just throw it in Slack and walk away.
-* **Always provide choices:** *"We are blocked on the payment gateway integration. I have outlined two solutions: Solution A (Wait 3 days for their API update) or Solution B (Integrate a secondary provider in 1 day). I recommend Solution B to maintain our launch timeline. Let me know if you align."*
-
-### 5. Cultivate Vocal Composure under Pressure
-When challenged by high-level leaders, breathing and pace are your armor. Speak 10% slower, use brief pauses before replying, and address assertions systematically instead of defensively.
-    `
+    id: 'abhang_2',
+    title: 'Sundar Te Dhyan (सुंदर ते ध्यान उभे विटेवरी)',
+    marathiTitle: 'सुंदर ते ध्यान उभे विटेवरी',
+    saint: 'Sant Tukaram Maharaj',
+    lyrics: `सुंदर ते ध्यान उभे विटेवरी ।
+कर कटावरी ठेवूनिया ॥ १ ॥
+तुळसी हार गळा कासे पीतांबर ।
+आवडे निरंतर हेचि ध्यान ॥ २ ॥
+मकर कुंडले तळपती कानी ।
+कौस्तुभमणी विराजित ॥ ३ ॥
+तुका म्हणे माझे हेचि सर्व सुख ।
+पाहीन श्रीमुख आवडीने ॥ ४ ॥`,
+    translation: 'Beautiful beyond words is this divine Form standing upright on a brick with hands gently placed on His waist. Around His neck hangs a fragrant Tulsi garland, wrapped with saffron-golden silk (Pitambar). This form is what I desire to contemplate for eternity. In His ears shine traditional dolphin-shaped earrings with the Kaustubha jewel glowing on His chest. Tukaram says: This is my entire bliss, to gaze on His glowing face with intense love.',
+    rag: 'Raga Yaman / Bhairavi',
+    tall: 'Bhajani Tala (८ मात्रा)',
+    audioPreset: 'harmony'
   },
   {
-    id: 'b3',
-    title: 'Case Study: How Ankita Transitioned from manual Testing to Technical PM in 6 Months',
-    category: 'Success Stories',
-    excerpt: 'Ankita felt pigeonholed in QA roles with stagnant payouts. Follow her exact transition roadmap, from cataloging tech skills, rewriting her PRD drafts, and mastering stakeholder alignments to landing her dream PM job.',
-    author: 'Dyaneshwar',
-    date: 'April 20, 2026',
-    readTime: '5 min read',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800',
-    content: `
-Ankita had been working as a QA tester for 4 years in a top-tier Indian services MNC in Pune. While she was excellent at finding edge cases, she felt increasingly disconnected from the "Why" behind the features she tested. Her career growth was plateauing, and she wanted deeper ownership, better compensation, and high-impact work.
-
-She decided she wanted to transition to a Technical Product Manager (TPM) role. This is her exact blueprint for how she accomplished it within 6 months of coaching with WeConnect.
-
-### Step 1: Mapping QA Strengths to PM Competencies
-Ankita didn't discard her QA background; she repositioned it. 
-* **QA Edge:** Deep understanding of user edge-cases, system bugs, and test-driven validation.
-* **TPM Translation:** "Risk mitigation, rigorous feature validation, and complex API workflow mapping."
-
-### Step 2: Practical PRD Sandbox Exercises
-At WeConnect, Ankita was tasked with finding a feature gap in an application she used daily (GPay India) and writing a comprehensive, bulletproof Product Requirement Document (PRD).
-* She detailed exact user journeys, user authentication failures, backend database state fields, and specific KPIs. She iterated on this draft 4 times based on feedback from Dyaneshwar.
-
-### Step 3: Practicing Stakeholder Communication
-We played mock boardroom simulations where Ankita had to represent this PRD to mock developers who raised massive technical pushbacks ("This is too complex", "We don't have database support for this"). Ankita learned to negotiate scope trade-offs and build consensus instead of backing down or escalating.
-
-### Step 4: The Strategic Job Campaign
-Instead of applying blindly, Ankita built a clean 1-page portfolio on Notion showcasing her GPay PRD, a video rundown of her system wireframes, and her QA-turned-PM resume. 
-
-#### The Result:
-Ankita received three Technical PM interview invites within 3 weeks. She nailed the final product design round at a Series B Fintech scale-up in Bangalore, secure a starting package that was **90% higher** than her previous QA remuneration, and is now happily steering their primary merchant ledger product.
-    `
+    id: 'abhang_3',
+    title: 'Majhe Maher Pandhari (माझे माहेर पंढरी)',
+    marathiTitle: 'माझे माहेर पंढरी भीवरेच्या तिरावरी',
+    saint: 'Sant Eknath Maharaj',
+    lyrics: `माझे माहेर पंढरी । भीवरेच्या तिरावरी ॥ १ ॥
+बाप रखुमादेवीवरु । विठ्ठल माझा प्रल्हाद-तारु ॥ २ ॥
+साधुसंत मायबाप । हरविती संताप ॥ ३ ॥
+एका जनार्दनी शरणागत । विठ्ठल पाहे हृदयस्थ ॥ ४ ॥`,
+    translation: 'Pandharpur is my loving mother’s home, sitting peacefully on the sacred banks of river Bhima (Chandrabhaga). There stands Vitthal, the protector and rescuer. All the holy saints are like my dear parents who soothe my anger, anxiety and sorrows. Janardana’s servant Eknath surrenders completely, witnessing Lord Vitthal residing deeply in his own heart.',
+    rag: 'Raga Yaman / Kalavati',
+    tall: 'Kerwa / Dadra (६ मात्रा)',
+    audioPreset: 'chant'
+  },
+  {
+    id: 'abhang_4',
+    title: 'Khel Mandiyela (खेळ मांडियेला इंड्राणीच्या काठी)',
+    marathiTitle: 'खेळ मांडियेला वाळवंटी घाई',
+    saint: 'Sant Tukaram Maharaj',
+    lyrics: `खेळ मांडियेला वाळवंटी घाई ।
+परस्परां पायीं मिठी पडली ॥ १ ॥
+महाद्वारीं वैष्णवांची दाटी ।
+सुखाचीच सुटी पंढरीये ॥ २ ॥
+नाचती हरीचे दास प्रेमें ।
+टाळियांचे घाईं हरिनाम ॥ ३ ॥
+तुका म्हणे खेळ सांडू नका कोणी ।
+पंढरिचा धनी राखतसे ॥ ४ ॥`,
+    translation: 'A divine festival game has been set up on the sands of Chandrabhaga. Everybody is falling at each other’s feet in deep, holy equality. The main temple gate is packed with thousands of loving Vaishnava devotees. Pandharpur is an absolute state of free bliss! The servants of Hari dance with ecstasy, clashing their cymbals and singing His names. Tukaram says: Let no one leave this glorious game of love, for the Lord of Pandhari Himself protects us all.',
+    rag: 'Raga Bhairavi (भैरवी)',
+    tall: 'Varkari Drut Tala (द्रुत ठेका)',
+    audioPreset: 'ecstasy'
   }
 ];
 
-export const INITIAL_BOOKINGS: Booking[] = [
+export const DEVOTIONAL_THOUGHTS: DevotionalThought[] = [
   {
-    id: 'b_init_1',
-    name: 'Rajesh Kumar',
-    email: 'rajesh.k@gmail.com',
-    phone: '+91 98765 43210',
-    topic: 'Technical Product Management Bootcamp',
-    date: '2026-05-28',
-    timeSlot: '11:00 AM - 11:30 AM',
-    status: 'confirmed',
-    createdAt: '2026-05-24 10:00 AM'
+    id: 'q1',
+    author: 'Sant Tukaram Maharaj',
+    quote: 'True spiritual devotion does not require leaving your family or escaping to a cave. Simply chant the Lord’s name, earn your living with moral honesty, and treat every living being with compassion.',
+    marathiQuote: 'प्रपंच साधून परमार्थ करावा, मुखाने हरीचे नाम घ्यावे आणि सत्य आणि भूतदयेचे पालन करावे.',
+    source: 'Tukaram Gatha'
   },
   {
-    id: 'b_init_2',
-    name: 'Pooja Deshmukh',
-    email: 'pooja.desh@outlook.com',
-    phone: '+91 87654 32109',
-    topic: 'Executive Presence & Soft Skills Mastery',
-    date: '2026-05-29',
-    timeSlot: '03:00 PM - 03:30 PM',
-    status: 'confirmed',
-    createdAt: '2026-05-23 02:40 PM'
+    id: 'q2',
+    author: 'Sant Dnyaneshwar Mauli',
+    quote: 'Knowledge is not dry information. It is seeing the same pure consciousness in an ant, a king, a saint, and a stone. True wisdom dissolves all sense of separate superiority.',
+    marathiQuote: 'ज्ञानाचा उदय म्हणजे सर्व भूतमात्रांमध्ये एकाच परमात्म्याचे दर्शन घेणे होय.',
+    source: 'Bhavartha Deepika Chapter 13'
+  },
+  {
+    id: 'q3',
+    author: 'Sant Chokhamela',
+    quote: 'The sugar cane may be twisted and bent, but its juice is ever straight and sweet. Similarly, a body may be despised by society, but the inner devotion to Vitthal remains pure and spotless.',
+    marathiQuote: 'ऊस डोंगा परी रस नव्हे डोंगा, काय भुललासी वरलीया रंगा.',
+    source: 'Chokhamela Abhangavalil'
   }
 ];
 
-export const INITIAL_TESTIMONIALS: Testimonial[] = [
+export const VARKARI_CALENDAR: EventCalendarItem[] = [
   {
-    id: 't1',
-    name: 'Ankita Sathe',
-    role: 'Technical PM',
-    company: 'Fintech Scaleup (Ex-QA at Infosys)',
-    rating: 5,
-    quote: "Dyaneshwar's coaching changed my entire perspective. I was stagnant in a manual testing role for 4 years. His PRD design frameworks and interview drills helped me transition with an instant 90% salary hike.",
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300&h=300'
+    id: 'ev_1',
+    title: 'Devshayani Ashadhi Ekadashi Sohla (आषाढी एकादशी सोहळा)',
+    marathiTitle: 'आषाढी एकादशी महासोहळा',
+    date: 'Ashadh Shuddha Ekadashi',
+    details: 'The peak of the annual Wari pilgrimage. Millions of Varkaris walk hundreds of miles from Alandi and Dehu carrying the sacred palqyuin (Palkhi) of Sant Dnyaneshwar and Sant Tukaram to Pandharpur.',
+    significance: 'Representing absolute soul surrender and equality, when Lord Vitthal welcomes his devotees home after their long physical trek.'
   },
   {
-    id: 't2',
-    name: 'Karthik Pillai',
-    role: 'Engineering Lead',
-    company: 'Unicorn Logistics Tech',
-    rating: 5,
-    quote: 'The Executive Presence module under Sneha and Dyaneshwar taught me how to communicate at a Director level. I stopped talking in code lines and started talking in business value. I got promoted to Tech Lead last quarter.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300&h=300'
+    id: 'ev_2',
+    title: 'Kartiki Ekadashi Samadhi Utsav (कार्तिकी एकादशी सोहळा)',
+    marathiTitle: 'कार्तिकी एकादशी आणि माउली संजीवन समाधी सोहळा',
+    date: 'Kartik Shuddha Ekadashi to Trayodashi',
+    details: 'The celebratory period marking the Sanjivan Samadhi of Sant Dnyaneshwar Maharaj in Alandi. He entered the sacred underground tomb alive in 1296 CE at the tender age of 21, leaving behind the message of cosmic love.',
+    significance: 'Varkaris gather in Alandi, turning the banks of river Indrayani into a beautiful ocean of golden oil lamps, continuous bhajans, and deep, tearful meditation.'
   },
   {
-    id: 't3',
-    name: 'Sunita Mehra',
-    role: 'VP Agile Operations',
-    company: 'Tier-1 IT Solutions',
-    rating: 5,
-    quote: 'Awesome templates! The scaling agile curriculum helped me restructure our delivery metrics across a department of 120+ engineers. Sprint leakage fell from 25% down to 6%. Staggering results.',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=300&h=300'
+    id: 'ev_3',
+    title: 'Tukaram Beej Sohla (तुकाराम बीज सोहळा)',
+    marathiTitle: 'जगद्गुरू संत तुकाराम महाराज बीज',
+    date: 'Phalgun Krishna Dwitiya',
+    details: 'The day Sant Tukaram Maharaj ascended directly to Vaikuntha (the spiritual realm) from the sacred Indrayani banks in Dehu, leaving final advice on love and truth to his disciples.',
+    significance: 'Dehu temple is decorated; lakhs of devotees sing the sacred Tukaram Gatha verses for 24 hours continuously.'
+  },
+  {
+    id: 'ev_4',
+    title: 'Sadguru Jog Maharaj Punyatithi (जोग महाराज पुण्यतिथी उत्सव)',
+    marathiTitle: 'सद्गुरू जोग महाराज पुण्यतिथी',
+    date: 'Kartik Krishna Ekadashi',
+    details: 'Reverent remembrance ceremonies at our Alandi math for the founder who organized the institutional gurukul. Devotees and graduated students return to touch the Samadhi padukas of Jog Maharaj.',
+    significance: 'Inspires students to renew their vows of selfless teaching, moral purity, and dedication to Varkari preservation.'
+  }
+];
+
+export const SISTER_PORTALS = [
+  {
+    name: 'Warkari Rojnishi Portal',
+    url: 'https://warkarirojnishi.in/',
+    description: 'Our primary parent website containing daily Varkari diary notes, updated Ekadashi schedules, local kirtankars contacts, and PDF sant literature.',
+    badge: 'Primary Reference Site'
+  },
+  {
+    name: 'Pandharpur Devsthan Mandir',
+    url: 'https://www.vitthalrukminimandir.org/',
+    description: 'The official portal of the main Vitthal Rakhumai temple in Pandharpur. Book live online darshan passes and support temple charity feeds.',
+    badge: 'Sacred Headquarters'
+  },
+  {
+    name: 'Alandi Dehu Palkhi Sohla',
+    url: 'https://www.varkarisampraday.org/',
+    description: 'Central registry of Varkari dindis (marching groups) tracking schedules, paths and security arrangements of the annual Palkhi procession.',
+    badge: 'Wari Pilgrimage Tracker'
   }
 ];

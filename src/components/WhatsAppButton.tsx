@@ -5,16 +5,19 @@ export default function WhatsAppButton() {
   const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
-    // Show a helpful tip 3 seconds after load to engage the user
+    // Show a helpful tip 4 seconds after load to engage the user
     const timer = setTimeout(() => {
-      setShowTooltip(true);
-    }, 4000);
+      const hasInteraction = localStorage.getItem('varkari_wa_dismissed');
+      if (!hasInteraction) {
+        setShowTooltip(true);
+      }
+    }, 5000);
     return () => clearTimeout(timer);
   }, []);
 
   const handleWhatsAppRedirect = () => {
     const phoneNumber = '919876543210';
-    const message = encodeURIComponent("Hi, I'm interested in WeConnect courses. Can you help?");
+    const message = encodeURIComponent("राम कृष्ण हरी! मला वारकरी शिक्षण संस्थेत प्रवेश घेण्याबद्दल अधिक माहिती हवी आहे.");
     const waUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(waUrl, '_blank', 'noopener,noreferrer');
   };
@@ -24,15 +27,18 @@ export default function WhatsAppButton() {
       
       {/* Tooltip speech bubble */}
       {showTooltip && (
-        <div className="mb-3.5 mr-1 max-w-[260px] bg-slate-900 text-white rounded-2xl p-3.5 shadow-2xl border border-slate-800 flex items-start gap-2.5 animate-bounce">
+        <div className="mb-3.5 mr-1 max-w-[260px] bg-slate-900 border border-orange-500/20 text-white rounded-2xl p-3.5 shadow-2xl flex items-start gap-2.5 animate-bounce">
           <div className="text-xs font-sans">
-            <span className="font-semibold text-emerald-400 block mb-0.5">💬 Support Active</span>
-            Have questions about our curricula? Let’s chat over WhatsApp instantly!
+            <span className="font-semibold text-orange-400 block mb-0.5">🚩 संपर्कात रहा (WhatsApp Desk)</span>
+            राम कृष्ण हरी! प्रवेश प्रक्रिया किंवा देणगीबद्दल काही प्रश्न आहेत का? आम्हाला व्हॉट्सॲपवर विचारा!
           </div>
           <button 
-            onClick={() => setShowTooltip(false)} 
+            onClick={() => {
+              setShowTooltip(false);
+              localStorage.setItem('varkari_wa_dismissed', 'true');
+            }} 
             className="text-slate-400 hover:text-white shrink-0 p-0.5"
-            title="Close help bubble"
+            title="Dismiss help bubble"
           >
             <X className="w-3 h-3" />
           </button>

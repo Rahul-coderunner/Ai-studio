@@ -1,6 +1,6 @@
 {
-  "name": "WeConnect",
-  "description": "A professional training and consulting platform for Indian B2C professionals, offering courses, blogs, discovery calls, and content management.",
+  "name": "Varkari Shikshan Sansthan",
+  "description": "Spiritual website for Varkari Shikshan Sansthan, Alandi Devachi, providing residential courses in Kirtan, Pakhavaj, Abhang Gayan, and interactive Dnyaneshwari studying portals.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

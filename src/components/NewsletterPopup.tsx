@@ -10,7 +10,7 @@ export default function NewsletterPopup() {
     // Show after 10 seconds of user interaction
     const timer = setTimeout(() => {
       // Check if user has already dismissed or subscribed in local storage to respect their experience
-      const hasInteraction = localStorage.getItem('weconnect_newsletter_dismissed');
+      const hasInteraction = localStorage.getItem('alandimauli_newsletter_dismissed');
       if (!hasInteraction) {
         setIsVisible(true);
       }
@@ -21,7 +21,7 @@ export default function NewsletterPopup() {
 
   const handleDismiss = () => {
     setIsVisible(false);
-    localStorage.setItem('weconnect_newsletter_dismissed', 'true');
+    localStorage.setItem('alandimauli_newsletter_dismissed', 'true');
   };
 
   const handleSubscribe = (e: React.FormEvent) => {
@@ -29,7 +29,7 @@ export default function NewsletterPopup() {
     if (email.trim()) {
       setSubscribed(true);
       setEmail('');
-      localStorage.setItem('weconnect_newsletter_dismissed', 'true');
+      localStorage.setItem('alandimauli_newsletter_dismissed', 'true');
       setTimeout(() => {
         setIsVisible(false);
       }, 3000);
@@ -50,51 +50,51 @@ export default function NewsletterPopup() {
 
       {subscribed ? (
         <div className="text-center py-4 space-y-3">
-          <div className="mx-auto w-12 h-12 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center">
-            <CheckCircle2 className="w-6 h-6" />
+          <div className="mx-auto w-12 h-12 rounded-full bg-amber-50 text-brand-secondary flex items-center justify-center">
+            <CheckCircle2 className="w-6 h-6 text-orange-600" />
           </div>
-          <h4 className="text-lg font-bold text-slate-900">Career Upgrades Scheduled</h4>
-          <p className="text-xs text-slate-500">
-            Check your professional inbox for our curriculum guidelines and welcome pack shortly.
+          <h4 className="text-lg font-bold text-slate-900 font-display">राम कृष्ण हरी!</h4>
+          <p className="text-xs text-slate-600">
+            You are successfully subscribed to the Daily Abhang & Ekadashi alarm. May Lord Panduranga bless you always.
           </p>
         </div>
       ) : (
         <form onSubmit={handleSubscribe} className="space-y-4">
           <div className="flex items-center gap-2 text-brand-secondary">
-            <Sparkles className="w-5 h-5 text-brand-accent animate-pulse" />
-            <span className="text-xs font-semibold tracking-wider uppercase">Free Master Guide</span>
+            <Sparkles className="w-5 h-5 text-orange-600 animate-pulse" />
+            <span className="text-xs font-semibold tracking-wider uppercase">हरिपाठ आणि अभंग संदेश</span>
           </div>
 
           <div className="space-y-1.5">
-            <h4 className="text-md font-bold text-slate-800 leading-snug">
-              Unlock the "Tech Leader Promotion Blueprint"
+            <h4 className="text-md font-bold text-slate-800 font-display leading-snug">
+              मिळवा रोज एक चिंतन अभंग आणि एकादशी आठवण!
             </h4>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Get our exclusive, peer-reviewed 45-page playbook with the top stakeholder negotiations templates used at top Indian unicorns.
+              Subscribe to receive beautiful, daily spiritual thoughts by Sant Tukaram Maharaj and Mauli Dnyaneshwar, complete with meaning and upcoming Ekadashi tithi notifications in Marathi and English.
             </p>
           </div>
 
           <div className="relative">
-            <Mail className="absolute left-3.5 top-3.5 w-4 h-4 text-slate-400" />
+            <Mail className="absolute left-3.5 top-3.5 w-4 h-4 text-orange-600/60" />
             <input
               type="email"
               required
-              placeholder="name@company.com"
+              placeholder="तुमचा ईमेल टाका (your-email@gmail.com)"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:ring-1 focus:ring-brand-primary focus:border-brand-primary focus:bg-white outline-hidden placeholder-slate-400"
+              className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:ring-1 focus:ring-orange-600 focus:border-orange-600 focus:bg-white outline-hidden placeholder-slate-400"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full py-3 rounded-xl bg-brand-primary hover:bg-brand-primary/95 text-xs text-white font-semibold transition-all hover:shadow-lg"
+            className="w-full py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-xs text-white font-semibold transition-all hover:shadow-lg"
           >
-            Claim Free Blueprint & Join Newsletter
+            सदस्य व्हा (Subscribe for Daily Abhangs)
           </button>
           
           <p className="text-[10px] text-center text-slate-400">
-            Zero junk. Unconditional privacy. Secure & un-spammy.
+            निष्काम आणि मोफत सेवा | No spam. Unsubscribe anytime.
           </p>
         </form>
       )}

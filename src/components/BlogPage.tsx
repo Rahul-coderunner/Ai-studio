@@ -12,7 +12,7 @@ export default function BlogPage({ initialBlogs }: BlogPageProps) {
   const [selectedCategory, setSelectedCategory] = useState<BlogCategory | 'All'>('All');
   const [selectedArticle, setSelectedArticle] = useState<BlogPost | null>(null);
 
-  const categories: (BlogCategory | 'All')[] = ['All', 'Career Growth', 'Industry Trends', 'Success Stories', 'Tips'];
+  const categories: (BlogCategory | 'All')[] = ['All', 'Saints', 'Festival', 'Pothi', 'History'];
 
   // Filtering Logic
   const filteredBlogs = blogs.filter((blog) => {
@@ -33,18 +33,18 @@ export default function BlogPage({ initialBlogs }: BlogPageProps) {
     <div className="bg-slate-50 min-h-screen pb-24 font-sans text-slate-800">
       
       {/* Page Header Banner */}
-      <section className="bg-brand-primary text-white py-16 px-4 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px] opacity-10" />
+      <section className="bg-orange-600 text-white py-16 px-4 text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(#fed7aa_1px,transparent_1px)] [background-size:16px_16px] opacity-15" />
         <div className="max-w-4xl mx-auto space-y-3.5">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-800 rounded-full text-xs font-semibold tracking-wider text-brand-secondary">
-            <Sparkles className="w-3.5 h-3.5 text-brand-accent animate-pulse" />
-            <span>Curated Business Insights</span>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-950 text-amber-200 rounded-full text-xs font-semibold tracking-wider">
+            <Sparkles className="w-3.5 h-3.5 text-amber-200 animate-pulse" />
+            <span>वारकरी सेवा विचार लेखसंग्रह</span>
           </div>
           <h1 className="text-3xl sm:text-4.5xl font-extrabold font-display tracking-tight leading-tight">
-            WeConnect Industry Insights & Resource Labs
+            Alandi Mauli Devotional Articles & Sant Charitra
           </h1>
-          <p className="max-w-xl mx-auto text-sm sm:text-base text-slate-300">
-            Strategic advice, actionable negotiations hacks, and career blueprint logs penned by veteran industry experts.
+          <p className="max-w-xl mx-auto text-sm sm:text-base text-orange-100">
+            संत ज्ञानेश्वर महाराज, संत तुकाराम आणि वारकरी संप्रदायाच्या प्राचीन तात्त्विक बैठकीवर अभ्यासपूर्ण व प्रासादिक लेख संग्रह.
           </p>
         </div>
       </section>
@@ -212,21 +212,20 @@ export default function BlogPage({ initialBlogs }: BlogPageProps) {
           </div>
 
           {/* Static Inline Newsletter CTA between resources view */}
-          <div className="bg-slate-900 text-white rounded-3xl p-8 border border-slate-800 text-center relative overflow-hidden">
-            <div className="absolute inset-x-0 bottom-0 top-1/2 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:20px_20px] opacity-10" />
+          <div className="bg-[#fffbeb] text-slate-800 rounded-3xl p-8 border border-amber-100 text-center relative overflow-hidden">
             <div className="relative z-10 space-y-4 max-w-xl mx-auto">
-              <span className="text-[10px] uppercase tracking-widest font-bold text-brand-secondary">Career Toolkit Updates</span>
-              <h4 className="text-xl sm:text-2xl font-extrabold font-display leading-tight">Join WeConnect Insights Club</h4>
-              <p className="text-xs text-slate-400">
-                10,000+ ambitious Indian developers and agile directors receive our weekly strategy guide on negotiating promotions, transitioning roles, and drafting system docs.
+              <span className="text-[10px] font-bold uppercase tracking-widest text-orange-600 block">नित्य सेवा स्मरण पत्र</span>
+              <h4 className="text-xl sm:text-2xl font-extrabold font-display leading-tight text-slate-900">मिळवा रोज एक चिंतन अभंग आणि एकादशी स्मरण!</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                संत ज्ञानेश्वर आणि तुकाराम महाराजांच्या प्रासादिक ओळी रोज अर्थासह थेट तुमच्या ईमेलवर मोफत मिळवा.
               </p>
               
               <div className="pt-2">
                 <button 
-                  onClick={() => alert('Please enroll via our sub newsletter prompts!')}
-                  className="px-6 py-3 bg-brand-secondary text-slate-950 text-xs font-bold rounded-xl hover:bg-brand-secondary/90 transition-all shadow-md"
+                  onClick={() => alert('Please scroll down or fill the sub newsletter popups!')}
+                  className="px-6 py-3 bg-orange-650 hover:bg-orange-700 text-white text-xs font-bold rounded-xl transition-all shadow-md cursor-pointer"
                 >
-                  Join Insights Club Now & Get Checklist PDF
+                  Subscribe for Daily Abhangs & Tithi Notes
                 </button>
               </div>
             </div>

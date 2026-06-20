@@ -1,52 +1,44 @@
 import React, { useState } from 'react';
-import { Course, CourseCategory } from '../types';
-import { Star, Clock, Sparkles, BookOpen, CheckCircle, ChevronRight, User, X, Landmark } from 'lucide-react';
+import { AdmissionCourse, AdmissionCourseCategory } from '../types';
+import { Star, Clock, Sparkles, BookOpen, CheckCircle, ChevronRight, User, X, Landmark, Heart, FileText } from 'lucide-react';
 
 interface CoursesPageProps {
-  courses: Course[];
+  courses: AdmissionCourse[];
   onOpenBookingWithCourse: (courseTitle: string) => void;
 }
 
 export default function CoursesPage({ courses, onOpenBookingWithCourse }: CoursesPageProps) {
-  const [selectedCategory, setSelectedCategory] = useState<CourseCategory | 'All'>('All');
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<AdmissionCourseCategory | 'All'>('All');
+  const [selectedCourse, setSelectedCourse] = useState<AdmissionCourse | null>(null);
   const [activeModuleIndex, setActiveModuleIndex] = useState<number | null>(0);
 
-  const categories: (CourseCategory | 'All')[] = ['All', 'Technical', 'Soft Skills', 'Leadership'];
+  const categories: (AdmissionCourseCategory | 'All')[] = ['All', 'Kirtan', 'Mridanga', 'Bhajan_Taal', 'Prasthantrayi'];
 
   const filteredCourses = selectedCategory === 'All' 
     ? courses 
     : courses.filter(c => c.category === selectedCategory);
 
-  const handleOpenDetail = (course: Course) => {
+  const handleOpenDetail = (course: AdmissionCourse) => {
     setSelectedCourse(course);
     setActiveModuleIndex(0); // reset accordion expand index
   };
 
-  const formattedPrice = (price: number) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      maximumFractionDigits: 0
-    }).format(price);
-  };
-
   return (
-    <div className="bg-slate-50 min-h-screen pb-24 font-sans text-slate-800">
+    <div className="bg-[#fdfbf7] min-h-screen pb-24 font-sans text-slate-800">
       
-      {/* Page Header */}
-      <section className="bg-brand-primary text-white py-16 px-4 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px] opacity-10" />
-        <div className="max-w-4xl mx-auto space-y-3.5">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 text-xs font-semibold tracking-wider text-brand-secondary">
-            <Sparkles className="w-3.5 h-3.5 text-brand-accent animate-pulse" />
-            <span>Structured Career Acceleration</span>
+      {/* Devotional Page Header */}
+      <section className="bg-gradient-to-br from-orange-850 to-orange-750 text-white py-16 px-4 text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(#fed7aa_1px,transparent_1px)] [background-size:18px_18px] opacity-15" />
+        <div className="max-w-4xl mx-auto space-y-4">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-950/40 border border-orange-500/20 text-xs font-semibold tracking-wider text-amber-300">
+            <Sparkles className="w-3.5 h-3.5 text-yellow-400 animate-pulse" />
+            <span>निःशुल्क धार्मिक निवासी अभ्यासक्रम</span>
           </div>
-          <h1 className="text-3xl sm:text-4.5xl font-extrabold font-display tracking-tight leading-tight">
-            Our Training Solutions & Bootcamps
+          <h1 className="text-3xl sm:text-5xl font-extrabold font-display tracking-tight leading-tight text-amber-100">
+            Residential Gurukul Curricula
           </h1>
-          <p className="max-w-xl mx-auto text-sm sm:text-base text-slate-300">
-            Intense, live cohort curricula with industry veteran mentoring designed to give you concrete, demonstrable engineering and governance capabilities.
+          <p className="max-w-xl mx-auto text-xs sm:text-sm text-orange-100/90 leading-relaxed font-sans font-medium">
+            Discover our comprehensive, fully sponsored 1 to 4 year residential career programs. Students receive intensive scriptural guidance, moral discipline, and live presentation training.
           </p>
         </div>
       </section>
@@ -55,18 +47,18 @@ export default function CoursesPage({ courses, onOpenBookingWithCourse }: Course
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 space-y-12">
         
         {/* Category Filters */}
-        <div className="flex flex-wrap items-center justify-center gap-2 border-b border-slate-200 pb-6">
+        <div className="flex flex-wrap items-center justify-center gap-2 border-b border-orange-200/40 pb-6">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-200 ${
+              className={`px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                 selectedCategory === cat
-                  ? 'bg-brand-primary text-white shadow-md scale-102'
-                  : 'bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:text-brand-primary'
+                  ? 'bg-orange-650 text-white shadow-md scale-102 border border-orange-650'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:border-orange-500/10 hover:text-orange-950'
               }`}
             >
-              {cat}
+              {cat === 'All' ? 'सर्व अभ्यासक्रम (All)' : cat}
             </button>
           ))}
         </div>
@@ -74,19 +66,19 @@ export default function CoursesPage({ courses, onOpenBookingWithCourse }: Course
         {/* Course Grid */}
         {filteredCourses.length === 0 ? (
           <div className="text-center py-16 bg-white rounded-3xl border border-slate-100 p-8">
-            <p className="text-slate-500 font-medium">No courses launched in this category yet. Check back soon!</p>
+            <p className="text-slate-500 font-medium font-mono text-xs">No active courses launched in this category for this session. Check back soon!</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredCourses.map((course) => (
               <div 
                 key={course.id}
-                className="bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
+                className="bg-white rounded-3xl border border-amber-100 overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full group"
               >
                 
-                {/* Course Image Wrapper */}
-                <div className="relative h-48 overflow-hidden bg-slate-100 shrink-0">
-                  <span className="absolute top-4 left-4 z-10 px-3 py-1 bg-white/95 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-wider text-brand-primary shadow-xs">
+                {/* Course Image Wrapper with fallback */}
+                <div className="relative h-48 overflow-hidden bg-[#faf8f4] shrink-0">
+                  <span className="absolute top-4 left-4 z-10 px-3 py-1 bg-white/95 backdrop-blur-md rounded-full text-[9px] font-extrabold uppercase tracking-wider text-orange-700 shadow-xs border border-orange-100">
                     {course.category}
                   </span>
                   <img 
@@ -94,53 +86,55 @@ export default function CoursesPage({ courses, onOpenBookingWithCourse }: Course
                     alt={course.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      // fallback representation
+                      e.currentTarget.src = "https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=600";
+                    }}
                   />
                   <div className="absolute inset-0 bg-slate-950/20" />
                 </div>
 
                 {/* Course Card Details */}
-                <div className="p-6 flex flex-col flex-1 space-y-4">
+                <div className="p-6 flex flex-col flex-grow space-y-4">
                   
-                  {/* Rating + Duration row */}
-                  <div className="flex items-center justify-between text-xs text-slate-500">
-                    <span className="flex items-center gap-1 font-medium bg-amber-50 text-amber-700 px-2 py-0.5 rounded-md">
-                      <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500 shrink-0" />
-                      <strong>{course.rating.toFixed(1)}</strong> ({course.reviewsCount})
+                  {/* Category Status & Duration */}
+                  <div className="flex items-center justify-between text-xs font-medium text-slate-500">
+                    <span className="flex items-center gap-1 bg-orange-600/5 text-orange-900 px-2 rounded-md font-bold py-0.5 border border-orange-500/10">
+                      <Heart className="w-3 h-3 text-orange-600 animate-pulse fill-orange-600" />
+                      Free Education
                     </span>
-                    <span className="flex items-center gap-1 bg-slate-50 px-20 py-0.5 rounded-md font-medium">
-                      <Clock className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <span className="flex items-center gap-1 bg-amber-500/10 text-orange-850 px-2 py-0.5 rounded-md font-extrabold">
+                      <Clock className="w-3.5 h-3.5 text-orange-750 shrink-0" />
                       {course.duration}
                     </span>
                   </div>
 
-                  {/* Title & Level */}
+                  {/* Title & Eligibility */}
                   <div className="space-y-1">
-                    <span className={`text-[10px] font-semibold tracking-wider uppercase ${
-                      course.level === 'Advanced' ? 'text-rose-500 bg-rose-50' : 'text-slate-500 bg-slate-50'
-                    } px-2 py-0.5 rounded`}>
-                      {course.level} Syllabus
-                    </span>
-                    <h3 className="text-lg font-bold text-slate-800 group-hover:text-brand-primary transition-colors leading-snug">
+                    <h3 className="text-md sm:text-base font-bold text-slate-900 group-hover:text-orange-600 transition-colors leading-snug">
                       {course.title}
                     </h3>
+                    <p className="text-[10px] text-slate-400 font-sans tracking-wide truncate">
+                      🚩 Eligibility: {course.eligibility}
+                    </p>
                   </div>
 
-                  <p className="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                  <p className="text-xs text-slate-500 leading-relaxed font-sans line-clamp-2">
                     {course.description}
                   </p>
 
-                  {/* Pricing and Action Alignment */}
+                  {/* Instructor Credentials and Action alignment */}
                   <div className="pt-4 border-t border-slate-100 flex items-center justify-between mt-auto">
                     <div>
-                      <span className="text-[10px] uppercase font-semibold text-slate-400 block tracking-wider">Course Fees</span>
-                      <span className="text-lg font-extrabold text-[#112240] font-sans">{formattedPrice(course.price)}</span>
+                      <span className="text-[9px] uppercase font-bold text-slate-400 block tracking-wider">मार्गदर्शक (Acharya)</span>
+                      <span className="text-xs font-extrabold text-slate-800 tracking-wide font-sans">{course.instructor.split(' ')[2] || course.instructor}</span>
                     </div>
                     
                     <button
                       onClick={() => handleOpenDetail(course)}
-                      className="px-4.5 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-brand-primary transition-all flex items-center gap-1.5"
+                      className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-orange-650 hover:text-white text-white text-xs font-semibold transition-all flex items-center gap-1 cursor-pointer"
                     >
-                      <span>Explore Outline</span>
+                      <span>Explore Curriculum</span>
                       <ChevronRight className="w-3.5 h-3.5" />
                     </button>
                   </div>
@@ -154,192 +148,96 @@ export default function CoursesPage({ courses, onOpenBookingWithCourse }: Course
 
       </div>
 
-      {/* Course Detail Full-Screen Overlay Modal */}
+      {/* Course Detail Overlay Modal */}
       {selectedCourse && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/65 backdrop-blur-sm p-4 overflow-y-auto">
-          <div className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative animate-scale-up-fade">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-xs p-4 overflow-y-auto">
+          <div className="bg-[#fffdfa] rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative animate-scale-up-fade text-xs flex flex-col">
             
             {/* Close button */}
             <button
               onClick={() => setSelectedCourse(null)}
-              className="absolute top-5 right-5 z-20 p-2 text-slate-400 hover:text-slate-800 hover:bg-slate-50 rounded-full"
+              className="absolute top-5 right-5 z-20 p-2 text-slate-400 hover:text-slate-800 hover:bg-slate-50 rounded-full cursor-pointer"
               title="Close modal"
             >
-              <X className="w-5 h-5" />
+              <X className="w-5 h-5 text-white sm:text-slate-800" />
             </button>
 
-            {/* Course Header Banner inside Modal */}
-            <div className="relative h-48 bg-slate-900 text-white flex items-end p-8">
+            {/* Course Header Banner */}
+            <div className="relative h-48 bg-slate-900 text-white flex items-end p-6 sm:p-8 shrink-0">
               <img 
                 src={selectedCourse.image} 
                 alt={selectedCourse.title}
-                className="absolute inset-0 w-full h-full object-cover opacity-32"
+                className="absolute inset-0 w-full h-full object-cover opacity-40"
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=800";
+                }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-slate-900/20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-slate-950/10" />
               
-              <div className="relative z-10 space-y-2">
-                <span className="text-[10px] font-bold uppercase tracking-widest bg-brand-secondary text-slate-900 px-3 py-1 rounded-full">
-                  {selectedCourse.category}
+              <div className="relative z-10 space-y-1.5">
+                <span className="text-[9px] font-bold uppercase tracking-widest bg-orange-600 text-white px-3 py-1 rounded-full border border-orange-500/10">
+                  {selectedCourse.category} Curricula
                 </span>
-                <h2 className="text-xl sm:text-2xl font-extrabold font-display leading-tight">{selectedCourse.title}</h2>
+                <h2 className="text-lg sm:text-2xl font-extrabold font-display leading-tight">{selectedCourse.title}</h2>
               </div>
             </div>
 
-            {/* Modal Content */}
-            <div className="p-8 space-y-8">
+            {/* Modal Content Scroll Room */}
+            <div className="p-6 sm:p-8 space-y-8 overflow-y-auto">
               
-              {/* Core Specs Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+              {/* Specs Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4.5 bg-amber-500/5 rounded-2xl border border-orange-500/10">
                 <div>
-                  <span className="text-[10px] uppercase font-semibold text-slate-400 block">Duration</span>
-                  <span className="text-sm font-bold text-slate-800">{selectedCourse.duration}</span>
+                  <span className="text-[9px] uppercase font-bold text-slate-400 block">Duration</span>
+                  <span className="text-xs font-bold text-slate-800 font-sans">{selectedCourse.duration}</span>
                 </div>
                 <div>
-                  <span className="text-[10px] uppercase font-semibold text-slate-400 block">Experience Level</span>
-                  <span className="text-sm font-bold text-slate-800">{selectedCourse.level}</span>
+                  <span className="text-[9px] uppercase font-bold text-slate-400 block">Sponsorship</span>
+                  <span className="text-xs font-semibold text-orange-700 font-sans">100% Free (मुफत)</span>
                 </div>
                 <div>
-                  <span className="text-[10px] uppercase font-semibold text-slate-400 block">Course Fee</span>
-                  <span className="text-sm font-bold text-brand-primary">{formattedPrice(selectedCourse.price)}</span>
+                  <span className="text-[9px] uppercase font-bold text-slate-400 block">Student Boarding</span>
+                  <span className="text-xs font-bold text-slate-800 font-sans">Full Residential</span>
                 </div>
                 <div>
-                  <span className="text-[10px] uppercase font-semibold text-slate-400 block">Instructed By</span>
-                  <span className="text-sm font-bold text-slate-800">{selectedCourse.instructorName}</span>
+                  <span className="text-[9px] uppercase font-bold text-slate-400 block">Lead Acharya</span>
+                  <span className="text-xs font-bold text-slate-800 font-sans">{selectedCourse.instructor}</span>
                 </div>
               </div>
 
-              {/* Description & Syllabus Progress Dynamics */}
+              {/* Course details & eligibility */}
               <div className="space-y-4">
-                <h3 className="text-base font-bold text-slate-800 flex items-center gap-1.5 border-b border-slate-100 pb-2">
-                  <BookOpen className="w-5 h-5 text-brand-secondary" />
-                  <span>Syllabus Overview</span>
+                <h3 className="text-sm font-bold text-slate-900 flex items-center gap-1.5 border-b border-slate-150 pb-2.5">
+                  <FileText className="w-4.5 h-4.5 text-orange-600" />
+                  <span>अभ्यासक्रम विमोचन (Overview & Eligibility)</span>
                 </h3>
-                <p className="text-xs text-slate-500 leading-relaxed">
+                <p className="text-xs text-slate-550 leading-relaxed font-sans">
                   {selectedCourse.description}
                 </p>
-
-                {/* Relative Topic Duration & Cumulative Progress Visualizer */}
-                <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100 space-y-4 mt-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] uppercase font-bold text-slate-500 tracking-wider flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-brand-secondary animate-pulse" />
-                      Program Pace & Topic Weight
-                    </span>
-                    <span className="text-[10px] bg-brand-primary/5 text-brand-primary font-mono px-2 py-0.5 rounded-full font-bold">
-                      {selectedCourse.duration} Program
-                    </span>
-                  </div>
-
-                  <div className="space-y-3.5">
-                    {(() => {
-                      const durationMatch = selectedCourse.duration.match(/(\d+)/);
-                      const totalWeeks = durationMatch ? parseInt(durationMatch[1], 10) : selectedCourse.syllabus.length;
-                      let currentWeekSum = 0;
-
-                      return selectedCourse.syllabus.map((step, idx) => {
-                        const parts = step.split(':');
-                        const weekLabel = parts[0]?.trim() || `Step ${idx + 1}`;
-                        const topicDesc = parts[1]?.trim() || step;
-
-                        const weekMatch = weekLabel.match(/Week\s*(\d+)(?:\s*-\s*(\d+))?/i);
-                        let stepWeeks = 1;
-                        if (weekMatch) {
-                          const start = parseInt(weekMatch[1], 10);
-                          const end = weekMatch[2] ? parseInt(weekMatch[2], 10) : start;
-                          stepWeeks = (end - start) + 1;
-                        }
-
-                        currentWeekSum += stepWeeks;
-                        const relativePercentage = (stepWeeks / totalWeeks) * 100;
-                        const cumulativeProgress = (currentWeekSum / totalWeeks) * 100;
-
-                        return (
-                          <div key={idx} className="space-y-1.5">
-                            <div className="flex justify-between text-xs">
-                              <span className="font-bold text-slate-700 truncate pr-2 max-w-[65%]">
-                                {weekLabel}: <span className="font-medium text-slate-500">{topicDesc.split('-')[0]}</span>
-                              </span>
-                              <div className="flex items-center gap-1.5 shrink-0 text-[10px] text-slate-500">
-                                <span className="font-mono text-slate-400 font-semibold">
-                                  {stepWeeks} {stepWeeks === 1 ? 'wk' : 'wks'} ({Math.round(relativePercentage)}%)
-                                </span>
-                                <span className="text-slate-300">|</span>
-                                <span className="font-mono bg-teal-50 text-brand-secondary font-bold px-1.5 py-0.2 rounded text-[9px]">
-                                  Cum. {Math.round(cumulativeProgress)}%
-                                </span>
-                              </div>
-                            </div>
-                            
-                            {/* Elegant Progress bar depicting topic weight and cumulative progression */}
-                            <div className="relative h-2 bg-slate-200/60 rounded-full overflow-hidden flex">
-                              {/* Left filler represents the current topic's relative duration weight */}
-                              <div 
-                                style={{ width: `${relativePercentage}%` }} 
-                                className="h-full bg-brand-secondary rounded-l transition-all duration-500" 
-                                title={`Topic duration takes ${Math.round(relativePercentage)}% of curriculum`}
-                              />
-                              {/* The rest progress gauge trail */}
-                              <div 
-                                style={{ width: `${Math.max(0, cumulativeProgress - relativePercentage)}%` }} 
-                                className="h-full bg-brand-primary opacity-40 transition-all duration-500" 
-                                title={`Completing this adds up to ${Math.round(cumulativeProgress)}% total course progress`}
-                              />
-                            </div>
-                          </div>
-                        );
-                      });
-                    })()}
-                  </div>
-                  
-                  {/* Progress Indicator Legend */}
-                  <div className="flex items-center gap-4 pt-2.5 text-[10px] text-slate-400 border-t border-slate-200/50">
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-2.5 h-2.5 bg-brand-secondary rounded" />
-                      <span>Topic weight</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-2.5 h-2.5 bg-brand-primary opacity-40 rounded" />
-                      <span>Cumulative progress</span>
-                    </div>
-                  </div>
+                <div className="p-3.5 bg-rose-50/25 border border-rose-100 rounded-xl text-slate-700 leading-normal font-sans">
+                  🚨 <strong>प्रवेश पात्रता नियम (Eligibility):</strong> {selectedCourse.eligibility}
                 </div>
               </div>
 
-              {/* Learning Outcomes Checklist with Checkmarks */}
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-slate-800 flex items-center gap-1.5">
-                  <CheckCircle className="w-5 h-5 text-brand-secondary" />
-                  <span>Key Skill Outcomes</span>
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-2">
-                  {selectedCourse.outcomes.map((outcome, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5">
-                      <span className="text-emerald-500 font-bold text-sm leading-none mt-0.5">•</span>
-                      <span className="text-slate-600 text-xs leading-relaxed">{outcome}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Curriculum Modules Accordion */}
+              {/* Curriculum Modules */}
               <div className="space-y-4">
-                <h3 className="text-base font-bold text-slate-800">Complete Weekly Breakdown</h3>
+                <h3 className="text-sm font-bold text-slate-900">Syllabus Steps & Phases (टप्पे)</h3>
                 <div className="space-y-2">
-                  {selectedCourse.syllabus.map((syllabusStep, idx) => {
+                  {selectedCourse.syllabus.map((detail, idx) => {
                     const isOpen = activeModuleIndex === idx;
                     return (
-                      <div key={idx} className="border border-slate-100 rounded-xl overflow-hidden">
+                      <div key={idx} className="border border-orange-100 rounded-xl overflow-hidden bg-white">
                         <button
                           onClick={() => setActiveModuleIndex(isOpen ? null : idx)}
-                          className="w-full text-left p-4 bg-slate-55 flex items-center justify-between font-medium text-xs text-slate-700 hover:bg-slate-100/50 transition-colors"
+                          className="w-full text-left p-4 bg-slate-50/50 flex items-center justify-between font-bold text-xs text-slate-750 hover:bg-slate-50 transition-colors cursor-pointer"
                         >
-                          <span className="font-semibold">{syllabusStep.split(':')[0]}</span>
-                          <span className="text-xs text-brand-secondary font-bold">{isOpen ? 'Hide' : 'Show Details'}</span>
+                          <span>{detail.split(':')[0]}</span>
+                          <span className="text-[10px] text-orange-600 font-bold uppercase">{isOpen ? 'Hide description' : 'View studies'}</span>
                         </button>
                         {isOpen && (
-                          <div className="p-4 bg-white text-xs text-slate-500 leading-relaxed border-t border-slate-100/70">
-                            {syllabusStep.split(':')[1] || 'Includes rigorous diagnostic portfolio checks, live review templates, and comprehensive QA assignments.'}
+                          <div className="p-4 bg-white text-xs text-slate-550 leading-relaxed border-t border-slate-100 font-sans font-medium">
+                            {detail.split(':')[1] || 'Detailed syllabus includes rigorous verbal exams, pronunciation training, rhythm loops execution, and live Alandi temple presentations supervised by senior Acharyas.'}
                           </div>
                         )}
                       </div>
@@ -348,38 +246,37 @@ export default function CoursesPage({ courses, onOpenBookingWithCourse }: Course
                 </div>
               </div>
 
-              {/* Instructor Bio Spot */}
-              <div className="bg-slate-50 rounded-2xl p-5 border border-slate-100 flex flex-col sm:flex-row gap-4 items-center sm:items-start">
-                <div className="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 text-lg uppercase font-bold shrink-0">
-                  <User className="w-5 h-5 text-brand-primary" />
+              {/* Instructor Bio Spot inside Gurukul */}
+              <div className="bg-amber-50/40 rounded-2xl p-5 border border-orange-100 flex flex-col sm:flex-row gap-4 items-center sm:items-start text-center sm:text-left">
+                <div className="w-10 h-10 rounded-full bg-orange-600/15 flex items-center justify-center text-orange-850 shrink-0 mt-0.5">
+                  <User className="w-5 h-5 text-orange-600" />
                 </div>
-                <div className="space-y-1 text-center sm:text-left">
-                  <h4 className="text-xs font-bold text-slate-800">
-                    Syllabus Coordinated by {selectedCourse.instructorName}
+                <div className="space-y-1">
+                  <h4 className="text-xs font-bold text-slate-900">
+                    Syllabus supervised by {selectedCourse.instructor}
                   </h4>
-                  <p className="text-[10px] text-brand-secondary uppercase font-semibold">{selectedCourse.instructorRole}</p>
-                  <p className="text-[11px] text-slate-500 leading-relaxed">
-                    Personal assessment parameters, career mapping worksheets, and dynamic corporate review checkpoints.
+                  <p className="text-[9px] text-orange-700 uppercase font-bold tracking-widest">{selectedCourse.instructorTitle}</p>
+                  <p className="text-[11px] text-slate-500 leading-relaxed font-sans">
+                    Guiding students in proper posture, breathing coordination, memory optimization methods, and devotional sincerity.
                   </p>
                 </div>
               </div>
 
-              {/* CTAs */}
-              <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="flex items-center gap-1.5 text-xs text-slate-500">
-                  <Landmark className="w-4 h-4 text-emerald-600" />
-                  <span>Corporate tax benefits & GST invoicing available on billing</span>
+              {/* Modal footer CTAs */}
+              <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 shrink-0">
+                <div className="flex items-center gap-1.5 text-xs text-slate-450 font-medium">
+                  <CheckCircle className="w-4 h-4 text-emerald-600" />
+                  <span>Alandi Residential Seat intake restricted to 15 candidates</span>
                 </div>
                 
                 <button
-                  id="modal_enroll_btn"
                   onClick={() => {
-                    onOpenBookingWithCourse(`Syllabus Alignment: ${selectedCourse.title}`);
+                    onOpenBookingWithCourse(`${selectedCourse.title} Admission inquiry`);
                     setSelectedCourse(null);
                   }}
-                  className="px-6 py-3 bg-brand-primary text-white font-semibold rounded-xl text-xs hover:bg-brand-primary/95 transition-all text-center shrink-0 w-full sm:w-auto"
+                  className="px-6 py-3 bg-orange-650 hover:bg-orange-750 text-white font-bold uppercase tracking-wide rounded-xl text-center shrink-0 w-full sm:w-auto cursor-pointer"
                 >
-                  Book Free Call to Enroll
+                  Apply For Admission
                 </button>
               </div>
 
